@@ -50,10 +50,7 @@
   <script src="main.js"></script>
 </head>
 
-<body>
-    <!-- Header -->
-<?php require'header.php' ?>
-    <div class="bg1">
+<div class="bg1">
         <main class="container-fluid">
             <div class="row">
               <div class="col-md-1"></div>
@@ -67,27 +64,47 @@
                           Blockchain. Dengan menggunakan blockchain, Anda tidak perlu khawatir akan adanya pemalsuan dan Anda tidak perlu melegalisir 
                           data yang Anda miliki berulang kali.</p>
                     </div>
-                    <a class="ml-3 button-purple nav-link font-weight-bold" href="/login.html" style="color:#FBBF5B">PELAJARI LEBIH LANJUT</a>
+                    <a class="ml-3 button-purple nav-link font-weight-bold" href="login.html" style="color:#FBBF5B">PELAJARI LEBIH LANJUT</a>
                 </div>
                 <div class="col-md-3">
-                    <form id="register-form" style="margin-top:200px" action="" method="POST">
+                    <div style="margin-top:200px">
                       <!-- Ersaad -->
                           <div class="text-center signup animated fadeInLeft text-white">
                             <div class="pt-3">
                               <h3 class="mt-3 mb-2 font-weight-bold" style="color:#FBBF5B">LOG IN</h3>
                             </div>
-                            <div style="padding: 20px; margin-top: 50px;">
-                              <label for="email">Email</label>
-                              <input class="form-control mb-2" type="text" id="email" name="email" style="width:100%;">
-                              <label for="pass">Password</label>
-                              <input class="form-control mb-2" type="password" id="pass" name="pass">
+                            <div class="w3-row mt-2" style="padding-left: 45px;">
+                              <a href="javascript:void(0)" onclick="openCity(event, 'London');" style="text-align:center;">
+                                <div class="w3-third tablink w3-bottombar w3-border-red w3-padding" style="width:120px;">Pengguna</div>
+                              </a>
+                              <a href="javascript:void(0)" onclick="openCity(event, 'Paris');" style="text-align:center;">
+                                <div class="w3-third tablink w3-bottombar w3-padding" style="width:120px;">Perusahaan</div>
+                              </a>
                             </div>
-                            <div class="mt-2">
-                              <button type="submit" class="btn button-rpeach font-weight-bold mb-2" style="border: 0px; color:#682B5F; font-size: 12pt; height: 50px; width: 130px; border-radius: 50px;">Log In</button>
-                              <p style="font-size: 12px;">Belum memiliki akun? <a routerLink="login"><span class="font-weight-bol" style="color:#FBBF5B">Daftar</span></a></p>
-                            </div>
+                            <form id="register-form" action="dashboard-status.html">
+                              <div id="London" class="w3-container user w3-border-red">
+                                <div style="padding: 20px;" >
+                                  <label for="email">Email</label>
+                                  <input class="form-control mb-2" type="text" id="email" name="email" style="width:100%;">
+                                  <label for="pass">Password</label>
+                                  <input class="form-control mb-2" type="password" id="pass" name="pass">
+                                </div>
+                              </div>
+                              <div id="Paris" class="w3-container user" style="display:none">
+                                <div style="padding: 20px;" >
+                                  <label for="email">ID Perusahaan</label>
+                                  <input class="form-control mb-2" type="text" id="email" name="email" style="width:100%;">
+                                  <label for="pass">Password</label>
+                                  <input class="form-control mb-2" type="password" id="pass" name="pass">
+                                </div>
+                              </div>
+                              <div class="mt-2">
+                                <button type="submit" class="btn button-rpeach font-weight-bold mb-2" style="border: 0px; color:#682B5F; font-size: 12pt; height: 50px; width: 130px; border-radius: 50px;">Log In</button>
+                                <p style="font-size: 12px;">Belum memiliki akun? <a routerLink="login"><span class="font-weight-bol" style="color:#FBBF5B">Daftar</span></a></p>
+                              </div>
+                            </form>
                         </div>
-                      </form>
+                      </div>
                 </div>
             </div>
             <div class="row mt-5"></div>
@@ -107,5 +124,21 @@
               </footer>
           </main>    
     </div>
+
+     <script>
+      function openCity(evt, userType) {
+          var i, x, tablinks;
+          x = document.getElementsByClassName("user");
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablink");
+          for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" w3-border-red", "");
+          }
+          document.getElementById(userType).style.display = "block";
+          evt.currentTarget.firstElementChild.className += " w3-border-red";
+        }
+    </script>
   </body>
 </html>
