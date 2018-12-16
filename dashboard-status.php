@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,50 +31,7 @@
 </head>
 <body>
     <!-- Header -->
-  <div class="navbar navbar-expand-lg navbar-dark nav-gradient nav-size-md gap fixed-top">
-  
-        <!-- Logo Brand Navbar -->  
-        <div class="col-xl-2">
-            <a href="index.html" class="navbar-brand" style="margin-left:80px"><img style="height: 40px;" src="assets/img//sertify-logotype.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-          <!-- Navbar -->
-        <div class="col-xl-7 d-flex justify-content-center margin-top-xs collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">HOME</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="faq.html">F.A.Q</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="how.html">HOW IT WORKS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="corporate.html">CORPORATE</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="pricing.html">PRICING</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="certificate-verification.php">VERIFIKASI</a>
-                </li>
-                <li class="nav-item">
-                    
-                </li>
-            </ul>
-          </div>
-        <!-- Button -->
-            <ul class="col-xl-3 nav navbar-nav mt-4 mr-3">
-                <li class="nav-item">
-                  <a class="button-rpeach font-weight-bold nav-link" href="/login.html">LOG IN</a>
-                </li>
-                <li>
-                  <a class="button-rpeach font-weight-bold nav-link" href="/index.html">SIGN UP</a>
-                </li>
-              </ul>
+  <?php require'header.php' ?>
       </div>
     <div class="row mb-4">
             <div class="sidebar col-xs-12 col-sm-4 col-lg-4 col-xl-3 center-align">
@@ -81,7 +42,7 @@
                                     <img src="assets/img//profile/human.jpg" alt="" class="picture">
                                     <div class="back-shape">
                                         <span class="sub-title font-weight-bold">Hello</span>
-                                        <h3 class="title font-weight-bold">Mazid Ahmad</h3>
+                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?></h3>
                                         <span class="sub-title font-weight-bold">Your Balance :</span>
                                         <p><span class="currency font-weight-bold">ETH  </span>   <span class="balance font-weight-bold">29.392.921</span></p>
                                     </div>
@@ -92,8 +53,8 @@
                     <div class="col-md-3 col-sm-6" style="margin-top:500px; position: fixed">
                             <nav>                                    
                                 <ul class="nav nav-pills flex-column sidebar-nav">
-                                    <li class="nav-item"><a href="dashboard-status.html" class="nav-link active font-weight-bold"><em class="fa fa-dashboard"></em> Status </a></li>
-                                    <li class="nav-item"><a href="dashboard-verified.html" class="nav-link font-weight-bold"><em class="fa fa-info"></em> Verified </a></li>
+                                    <li class="nav-item"><a href="dashboard-status.php" class="nav-link active font-weight-bold"><em class="fa fa-dashboard"></em> Status </a></li>
+                                    <li class="nav-item"><a href="dashboard-verified.php" class="nav-link font-weight-bold"><em class="fa fa-info"></em> Verified </a></li>
                                     <li class="nav-item"><a href="dashboard-rejected.html" class="nav-link font-weight-bold"><em class="fa fa-times-circle"></em> Reject </a></li>
                                     <li class="nav-item"><a href="da" class="nav-link font-weight-bold"><em class="fa fa-pause"></em> Pending </a></li>
                                 </ul>
