@@ -68,8 +68,12 @@
                         die("Connection failed: " . mysqli_connect_error());
                     }
                     $id = $_SESSION['id'];
-                    $sql = "SELECT * FROM certificates
-                    where status = 's'AND user_id = $id";
+                    $sql = "SELECT certificates.number as number,
+                    certificates.digital_signature as ds,
+                    agencies.name as name,
+                    certificates.upload_at
+                    FROM certificates, agencies
+                    WHERE certificates.agency_id = agencies.id AND certificates.status = 's' AND certificates.user_id = $id";
                     $result = mysqli_query($conn, $sql);
                     
                     
@@ -96,8 +100,8 @@
                                     echo "
                                         <tr>
                                             <td>" . $row["number"]. "</td>
-                                            <td>" . $row["digital_signature"]. "</td>
-                                            <td>" . $row["agency_id"]. "</td>
+                                            <td>" . $row["ds"]. "</td>
+                                            <td>" . $row["name"]. "</td>
                                             <td>" . $row["upload_at"]. "</td>
                                             <td><button type='button' class='btn btn-info btn-sm btn-block button-rpeach font-weight-bold' style='border-radius:50px;' data-toggle='modal' data-target='#exampleModalLong'>Copy</button></td>
                                         </tr>";
