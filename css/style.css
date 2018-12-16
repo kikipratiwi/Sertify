@@ -810,7 +810,7 @@ transition:0.5s;
 
 .bg1 {
   /* The image used */
-  background-image: url("assets/img//bg-home.jpg");
+  background-image: url("../assets/img//bg-home.jpg");
 
   /* Full height */
   height: 100%;
@@ -823,7 +823,7 @@ transition:0.5s;
 
 .bg2 {
   /* The image used */
-  background-image: url("assets/img//bg-how.jpg");
+  background-image: url("../assets/img//bg-how.jpg");
 
   /* Full height */
   height: 100%;
@@ -835,7 +835,7 @@ transition:0.5s;
 }
 .bg3 {
   /* The image used */
-  background-image: url("assets/img//bg-upload.jpg");
+  background-image: url("../assets/img//bg-upload.jpg");
 
   /* Full height */
   height: 100%;
