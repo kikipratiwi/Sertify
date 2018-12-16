@@ -1,0 +1,1 @@
+<embed src="demo.pdf#toolbar=0" type="application/pdf" width="80%" height="600px" id="fileToHash">
