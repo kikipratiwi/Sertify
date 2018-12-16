@@ -1,9 +1,6 @@
 <?php
 
 include "connection.php";
-echo '<script language="javascript">';
-                echo 'alert("Data berhasil diupload")';
-                echo '</script>';
 
 date_default_timezone_set("Asia/Jakarta");
  	
