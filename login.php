@@ -66,7 +66,7 @@
                                 </div>
                               </div>
                             </form>
-                            <form id="register-form" action="login-corporate.php" method="POST">
+                            <form action="login-corporate.php" method="POST">
                               <div id="Paris" class="w3-container user" style="display:none">
                                 <div style="padding: 20px;" >
                                   <label for="email">ID Perusahaan</label>

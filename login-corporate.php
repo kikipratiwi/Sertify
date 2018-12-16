@@ -17,11 +17,11 @@
     
     // If result matched $myusername and $mypassword, table row must be 1 row
   
-    if(true) {
+    if($count == 1) {
       $_SESSION['login'] = true;
       $_SESSION['name'] = $row['name'];
       $_SESSION['id'] = $row['id'];
-       header("location: dashboard-corporate.html");
+       header("location: dashboard-corporate.php");
     }else {
        $error = "Your Login Name or Password is invalid";
     }
