@@ -74,7 +74,7 @@
                               <div id="Paris" class="w3-container user" style="display:none">
                                 <div style="padding: 20px;" >
                                   <label for="email">ID Perusahaan</label>
-                                  <input class="form-control mb-2" type="text" id="email" name="email" style="width:100%;">
+                                  <input class="form-control mb-2" type="text" id="id" name="id" style="width:100%;">
                                   <label for="pass">Password</label>
                                   <input class="form-control mb-2" type="password" id="pass" name="pass">
                                 </div>
