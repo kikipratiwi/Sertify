@@ -129,6 +129,12 @@
                         <li><button type="button" class="btn btn-default prev-step" id="prevBtn" onClick="toggleFunc()">Previous</button></li>
                     </ul>
             </form>
+            <form method="POST" action="http://localhost/sertify/public/process/save-digitalSig.php">
+                <input type="hidden" name="digital_signature"></input>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" name="done">Done</button>
+                </div>
+            </form>
         </div>
         <div class="row" id="s-stampForm">
             <form role="form" id="stampForm">
