@@ -58,7 +58,7 @@
                     $servername = "localhost";
                     $username = "root";
                     $password = "";
-                    $dbname = "proyek";
+                    $dbname = "db_sertify";
 
                     // Create connection
                     $conn = mysqli_connect($servername, $username, $password, $dbname);
