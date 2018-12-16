@@ -5,10 +5,10 @@
   if($_SERVER["REQUEST_METHOD"] == "POST") {
     // username and password sent from form 
     
-    $email = mysqli_real_escape_string($db,$_POST['email']);
+    $id = mysqli_real_escape_string($db,$_POST['id']);
     $pass = mysqli_real_escape_string($db,$_POST['pass']); 
     
-    $sql = "SELECT name,id FROM agencies WHERE email = '$email' and password = '$pass'";
+    $sql = "SELECT name,id FROM agencies WHERE id = '$id' and password = '$pass'";
     $result = mysqli_query($db,$sql);
     $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
     $active = $row['active'];
@@ -17,13 +17,13 @@
     
     // If result matched $myusername and $mypassword, table row must be 1 row
   
-    if(true) {
+    if($count == 1) {
       $_SESSION['login'] = true;
       $_SESSION['name'] = $row['name'];
       $_SESSION['id'] = $row['id'];
-       header("location: dashboard-corporate.html");
+       header("location: dashboard-corporate.php");
     }else {
-       $error = "Your Login Name or Password is invalid";
+      header("location: login.php");
     }
  }
 
