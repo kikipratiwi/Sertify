@@ -49,15 +49,20 @@
                               <h3 class="mt-3 mb-2 font-weight-bold" style="color:#FBBF5B">LOG IN</h3>
                             </div>
                             <div class="w3-row mt-2" style="padding-left: 45px;">
-                              <a href="javascript:void(0)" onclick="openCity(event, 'London');" style="text-align:center;">
+                              <a href="javascript:void(0)" onclick="openCity(event, 'User-Login');" style="text-align:center;">
                                 <div class="w3-third tablink w3-bottombar w3-border-red w3-padding" style="width:120px;">Pengguna</div>
                               </a>
-                              <a href="javascript:void(0)" onclick="openCity(event, 'Paris');" style="text-align:center;">
+                              <a href="javascript:void(0)" onclick="openCity(event, 'Corporate-Login');" style="text-align:center;">
                                 <div class="w3-third tablink w3-bottombar w3-padding" style="width:120px;">Perusahaan</div>
                               </a>
                             </div>
+<<<<<<< Updated upstream
                             <form id="user-form" action="login-user.php" method="POST">
                               <div id="London" class="w3-container user w3-border-red">
+=======
+                            <form id="register-form-user" action="login-user.php" method="POST">
+                              <div id="User-Login" class="w3-container user w3-border-red">
+>>>>>>> Stashed changes
                                 <div style="padding: 20px;" >
                                   <label for="email">Email</label>
                                   <input class="form-control mb-2" type="text" id="email" name="email" style="width:100%;">
@@ -70,8 +75,13 @@
                                 </div>
                               </div>
                             </form>
+<<<<<<< Updated upstream
                             <form action="login-corporate.php" method="POST">
                               <div id="Paris" class="w3-container user" style="display:none">
+=======
+                            <form id="register-form-corporate" action="login-corporate.php" method="POST">
+                              <div id="Corporate-Login" class="w3-container user" style="display:none">
+>>>>>>> Stashed changes
                                 <div style="padding: 20px;" >
                                   <label for="email">ID Perusahaan</label>
                                   <input class="form-control mb-2" type="text" id="id" name="id" style="width:100%;">
