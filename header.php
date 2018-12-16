@@ -38,7 +38,7 @@
                         <a class=\"button-rpeach font-weight-bold nav-link\" href=\"login.php\">LOG IN</a>
                       </li>
                       <li>
-                        <a class=\"button-rpeach font-weight-bold nav-link\" href=\"home.php\">SIGN UP</a>
+                        <a class=\"button-rpeach font-weight-bold nav-link\" href=\"index.php\">SIGN UP</a>
                       </li>";
                     }else {
                         echo "<li class=\"nav-item\">
