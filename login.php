@@ -1,33 +1,6 @@
-<?php
 
-  include 'config.php';
-  session_start();
-  if($_SERVER["REQUEST_METHOD"] == "POST") {
-    // username and password sent from form 
-    
-    $email = mysqli_real_escape_string($db,$_POST['email']);
-    $pass = mysqli_real_escape_string($db,$_POST['pass']); 
-    
-    $sql = "SELECT name,id FROM users WHERE email = '$email' and password = '$pass'";
-    $result = mysqli_query($db,$sql);
-    $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    $active = $row['active'];
-    
-    $count = mysqli_num_rows($result);
-    
-    // If result matched $myusername and $mypassword, table row must be 1 row
-  
-    if($count == 1) {
-      $_SESSION['login'] = true;
-      $_SESSION['name'] = $row['name'];
-      $_SESSION['id'] = $row['id'];
-       header("location: dashboard-status.php");
-    }else {
-       $error = "Your Login Name or Password is invalid";
-    }
- }
 
-?>
+
 
 <!DOCTYPE html>
 <html>
@@ -48,8 +21,10 @@
   <!-- font Open Sans -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <script src="main.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
-
+<body>
+<?php require'header.php' ?>
 <div class="bg1">
         <main class="container-fluid">
             <div class="row">
@@ -81,7 +56,7 @@
                                 <div class="w3-third tablink w3-bottombar w3-padding" style="width:120px;">Perusahaan</div>
                               </a>
                             </div>
-                            <form id="register-form" action="dashboard-status.html">
+                            <form id="register-form" action="login-user.php" method="POST">
                               <div id="London" class="w3-container user w3-border-red">
                                 <div style="padding: 20px;" >
                                   <label for="email">Email</label>
@@ -90,6 +65,8 @@
                                   <input class="form-control mb-2" type="password" id="pass" name="pass">
                                 </div>
                               </div>
+                            </form>
+                            <form id="register-form" action="login-corporate.php" method="POST">
                               <div id="Paris" class="w3-container user" style="display:none">
                                 <div style="padding: 20px;" >
                                   <label for="email">ID Perusahaan</label>

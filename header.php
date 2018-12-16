@@ -35,10 +35,10 @@
                 <?php
                     if(!isset($_SESSION['login'])){
                         echo "<li class=\"nav-item\">
-                        <a class=\"button-rpeach font-weight-bold nav-link\" href=\"login.php\">LOG IN</a>
+                        <a class=\"button-rpeach font-weight-bold nav-link\" href=\"login.php\">LOGIN</a>
                       </li>
                       <li>
-                        <a class=\"button-rpeach font-weight-bold nav-link\" href=\"index.php\">SIGN UP</a>
+                        <a class=\"button-rpeach font-weight-bold nav-link\" href=\"index.php\">SIGNUP</a>
                       </li>";
                     }else {
                         echo "<li class=\"nav-item\">
