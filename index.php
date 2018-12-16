@@ -43,17 +43,16 @@
               </div>
               <div class="col-md-3">
                   <!-- method="POST" action="process/registration.php" -->
-                  <form id="register-form" style="margin-top:200px;" >
-                    <!-- Ersaad -->
+                  <form id="register-form" style="margin-top:200px;" action="registration-user.php" method="POST">
                         <div class="text-center signup animated fadeInLeft text-white">
                           <div class="pt-3">
                             <h3 class="mt-3 mb-2 font-weight-bold" style="color:#FBBF5B">SIGN UP</h3>
                           </div>
                           <div style="padding: 20px;">
                             <label for="email">Email</label>
-                            <input class="form-control mb-2" type="password" id="email" name="email">
+                            <input class="form-control mb-2" type="email" id="email" name="email">
                             <label for="pass">Password</label>
-                            <input class="form-control mb-2" type="password" id="pass" name="pass">
+                            <input class="form-control mb-2" type="password" id="pass" name="password">
                             <label for="repass">Re-type Password</label>
                             <input class="form-control mb-2" type="password" id="repass" name="repass">
                           </div>
