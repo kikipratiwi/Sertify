@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,48 +24,7 @@
 </head>
 <body>
   <!-- Header -->
-  <div class="navbar navbar-expand-lg navbar-dark nav-gradient nav-size-md gap fixed-top">
-  
-      <!-- Logo Brand Navbar -->  
-      <div class="col-xl-2">
-        <a href="#" class="navbar-brand" style="margin-left:80px"><img style="height: 40px;" src="assets/img//sertify-logotype.png"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-      </div>
-        <!-- Navbar -->
-        <div class="col-xl-7 d-flex justify-content-center margin-top-xs collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">HOME</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="faq.html">F.A.Q</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="how.html">HOW IT WORKS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="corporate.html">CORPORATE</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost:3000/certificate-verification.html">VERIFIKASI</a>
-              </li>
-              <li class="nav-item">
-                  
-              </li>
-          </ul>
-        </div>
-      <!-- Button -->
-          <ul class="col-xl-3 nav navbar-nav mt-4 mr-3">
-              <li class="nav-item">
-                <a class="button-rpeach font-weight-bold nav-link" href="login.html">LOG IN</a>
-              </li>
-              <li>
-                <a class="button-rpeach font-weight-bold nav-link" href="#">SIGN UP</a>
-              </li>
-            </ul>
-    </div>
+  <?php require'header.php' ?>
   <div class="bg1">
       <main class="container-fluid">
           <div class="row">

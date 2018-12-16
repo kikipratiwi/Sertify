@@ -112,7 +112,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary genSigButton">Generate Signature</button>
+                        <button type="submit" class="btn btn-primary genSigButton" id="genSigSubmit">Generate Signature</button>
                     </div>
 
                     <div class="form-group">
@@ -125,9 +125,15 @@
                         </div>
                     </div>
 
-                    <ul class="list-inline pull-right">
+                    <!-- <ul class="list-inline pull-right">
                         <li><button type="button" class="btn btn-default prev-step" id="prevBtn" onClick="toggleFunc()">Previous</button></li>
-                    </ul>
+                    </ul> -->
+            </form>
+            <form method="POST" action="http://localhost/sertify/public/process/save-digitalSig.php">
+                <input type="hidden" name="digital_signature"></input>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" name="done">Done</button>
+                </div>
             </form>
         </div>
         <div class="row" id="s-stampForm">
@@ -287,6 +293,16 @@
         //     btn.disabled = true;
         // }
 
+        function confirmation() {
+            var message = "Apakah anda yakin akan memvalidasi sertifikat ini?";
+            if (confirm("Press a button!")) {
+                txt = "You pressed OK!";
+            } else {
+                txt = "You pressed Cancel!";
+            }
+            document.getElementById("demo").innerHTML = txt;
+        }
+
         function toggleFunc() {
             var preview = document.getElementById("certificate-preview");
             var sigForm = document.getElementById("s-genSigForm");
@@ -300,6 +316,9 @@
         } 
 
         $(document).ready(function(){
+            var sigForm = document.getElementById("s-genSigForm");
+            sigForm.style.display = "none";
+            
             $("#s-genSigForm").hide();
             $("#s-stampForm").hide();
             $("#s-verifySigForm").hide();
