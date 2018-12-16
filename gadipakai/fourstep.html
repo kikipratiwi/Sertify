@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=yes">
+  <meta name="application-name" content="DocStamp.it">
+  <meta name="description" content="Notarize documents online, timestamp, ethereum, blockchain">
+  <meta name="keywords" content="notary, online, document, timestamp, ethereum, blockchain, smart contracts">
+  <meta name="robots" content="index,follow">
+  <meta name="googlebot" content="index,follow">
+  <title>Sertify - Notarize your documents on Ethereum</title>
+  
+  <link rel="canonical" href="https://docstamp.it">
+  <link href="/css/style.css" rel="stylesheet">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39494276-10"></script>
+  
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-39494276-10');
+  </script>
+</head>
+<body>
+    <header id="header">
+        <h1>
+            <!-- <img src="https://user-images.githubusercontent.com/168240/39511732-55b8b16a-4da3-11e8-872d-2497788cca38.png" alt="docstamp.it" width="300" /> -->
+            <span>
+                Network: <strong id="networkType">-</strong><br>
+                <a id="etherscanLink" href="https://etherscan.io" target="_blank" rel="noopener noreferrer">etherscan</a>&nbsp;|&nbsp;
+                <a href="https://github.com/coincircle/docstamp.it" target="_blank" rel="noopener noreferrer">github</a>
+            </span>
+        </h1>
+        <!-- <small>Document Notarization on the Ethereum Blockchain</small> -->
+    </header>  
+
+    <div class="container" id="">
+            <a class="nav-link" href="http://localhost:3000/index.html">HOME</a>
+        <div class="row">
+            <section>
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Step 1">
+                                    <span class="round-tab">
+                                        <i class="fas fa-stamp"></i>
+                                    </span>
+                                </a>
+                            </li>
+        
+                            <!-- <li role="presentation"> -->
+                            <li role="presentation" class="disabled">
+                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Step 2">
+                                    <span class="round-tab">
+                                        <i class="fas fa-file-signature"></i>
+                                    </span>
+                                </a>
+                            </li>
+
+                            <!-- <li role="presentation"> -->
+                            <li role="presentation" class="disabled">
+                                <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Step 3">
+                                    <span class="round-tab">
+                                        <i class="fas fa-clipboard-check"></i>
+                                    </span>
+                                </a>
+                            </li>
+        
+                            <!-- <li role="presentation"> -->
+                            <li role="presentation" class="disabled">
+                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Complete">
+                                    <span class="round-tab">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='tab-content'>
+                        <div class='tab-pane active' role="tabpanel" id="step1">
+                            <form role="form" id="stampForm">
+                                <h3>Stamp a Document</h3>
+                                <p>Notarize the document, to later prove that you cryptographically signed it.</p>
+        
+                                <div class="form-group">
+                                    <label class="custom-file-label" for="customFile">File</label>
+                                    <input type="file" class="btn btn-default" id="stampFile">
+                                    <small class="form-text text-muted">Only the hash (Keccak-256) of the document is retrieved to be stored as the fingerprint; the actual contents are never stored anywhere.</small>
+                                    <small class='help-block with-errors'></small>
+                                </div>
+        
+                                <div class="form-group">
+                                    <label>Hash</label>
+                                    <input type="text" class="form-control" id="stampHash" readonly>
+                                    <small class="form-text text-muted">The fingerprint of the document (Keccak-256 hash).</small>
+                                </div>
+        
+                                <ul class="list-inline pull-right">
+                                    <li>
+                                        <button type="submit" class="btn btn-primary next-step-step-1">
+                                            Stamp and continue
+                                        </button>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div> 
+
+                        <div class='tab-pane' role="tabpanel" id="step2">
+                            <form role="form" id="genSigForm">
+                                <h3>Generate Signature to Prove that you Stamped Document</h3>
+                                <p>You can generate a cryptographic signature of the document you notarized to prove to others that you are indeed the signer.</p>
+        
+                                <div class="form-group">
+                                    <label>The file you notarized</label>
+                                    <input type="file" class="btn btn-default" id="genSigFile">
+                                    <small class='help-block with-errors'></small>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary genSigButton">Generate Signature</button>
+                                </div>
+        
+                                <div class="form-group">
+                                    <div class="formOutput">
+                                        <label>Signature</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="genSigHash" readonly>
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="button" onclick="copyFunc()">
+                                                    <i class="fas fa-copy"></i>
+                                                </button>
+                                            </span>
+                                        </div><!-- /input-group -->
+                                        <small class="form-text text-muted">The cryptographic signature which you can share.</small>
+                                    </div>
+                                </div>
+
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                    <li><button type="button" class="btn btn-primary next-step-step-2">Continue</button></li>
+                                </ul>
+                            </form>
+                        </div>
+
+                        <div class='tab-pane' role="tabpanel" id="step3">
+                            <form role="form" id="verifySigForm">
+                                <h3>Verify Signature</h3>
+                                <p>You can verify that the signature signer actually owns that document they claim to own.</p>
+        
+                                <div class="form-group">
+                                    <label>The file you notarized</label>
+                                    <input type="file" class="btn btn-default" id="verifySigFile" >
+                                    <div class='help-block with-errors'></div>
+                                </div>
+        
+                                <div class="form-group">
+                                    <label>Signature</label>
+                                    <input type="text" class="form-control" id="verifySigInput">
+                                    <small>The signer's provided signature</small>
+                                </div>
+
+                                <ul class="list-inline pull-right">
+                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
+                                    <li><button type="submit" class="btn btn-success btn-info-full next-step">Validate</button></li>
+                                    <li><button type="submit" class="btn btn-primary next-step-step-3">Check here</button></li>
+                                </ul>
+
+                                <div class="formOutput">
+                                    <output id="verifySigOut"></output>
+                                </div>
+                            </form>
+                        </div>  
+
+                        <div class='tab-pane' role="tabpanel" id="complete">
+                            <div class="formOutput">
+                                <output id="verifySigOut"></output>
+                            </div>
+                            
+                            <h3>Check Stamper of Document</h3>
+                            <p>See who the signer of the document is.</p>
+                            
+                            <form id="checkForm">
+                                <div class="form-group">
+                                    <label>File</label>
+                                    
+                                    <div class="custom-file mb-3">
+                                        <input type="file" class="btn btn-default" id="checkFile">
+                                        <small class="form-text text-muted">Upload the original file to retrieve the document fingerprint; remember, nothing is ever stored.</small></label>
+                                    </div>
+                                </div>
+        
+                                <div class="form-group">
+                                    <div class="head">Hash</div>
+                                        <input type="text" class="form-control" id="checkHash" readonly>
+                                        <small class="form-text text-muted">The fingerprint of the document (Keccak-256 hash)</small>
+                                </div>
+                                    
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Check Stamper</button>
+                                </div>
+    
+                                <div class="formOutput">
+                                    <div class="form-group">
+                                        <div class="head">Stamper</div>
+                                        <input type="text" class="form-control" readonly id="checkStamper">
+                                        <small class="form-text text-muted">When the document was notarized.</small>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="head">Datetime</div>
+                                    <input type="text" class="form-control" id="checkDatetime" readonly>
+                                    <small class="form-text text-muted">Check Stamper</small>
+                                </div>
+                            </form>
+                        </div>
+                    </div><!--end tab content-->
+                    
+                    <div class="clearfix"></div>
+
+                  </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="/vendor/web3.min.js"></script>
+    <script src="/dist/bundle.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Initialize tooltips
+            $('.nav-tabs > li a[title]').tooltip();
+
+            //Wizard
+            $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+        
+                var $target = $(e.target);
+            
+                if ($target.parent().hasClass('disabled')) {
+                    return false;
+                }
+            });
+
+            //stampFileForm validation
+            // $("#stampFile").change(function(e){
+            //     var stampFile = $(this);
+            //     var isFilePresent = stampFile.val().length > 0
+                
+            //     if (isFilePresent){
+            //         stampFile.parent().removeClass('has-feedback').removeClass('has-error').removeClass('has-danger')
+            //         stampFile.parent().find('.help-block.with-errors').html("");
+            //         stampFile.parent().find('label').css('color', 'black');
+            //         stampFile.css('border-color', '#ced4da');
+            //     }
+            // });
+
+            $(".next-step-step-1").click(function (e) {
+                // var stampFile = $("#stampFile");
+                // var isFilePresent = stampFile.val().length > 0
+
+                // if (!isFilePresent){
+                //     stampFile.parent().addClass('has-feedback').addClass('has-error').addClass('has-danger')
+                //     stampFile.parent().find('.help-block.with-errors').html("This field is required");
+                //     stampFile.parent().find('label').css('color', '#a94442');
+                //     stampFile.css('border-color', '#a94442');
+                // }
+
+                // if (isFilePresent){
+                    nextStep();
+                // }
+            });
+
+            $(".next-step-step-2").click(function(e){
+                nextStep();
+            })
+
+            $(".next-step-step-3").click(function(e){
+                nextStep();
+            })
+
+            $(".prev-step").click(function (e) {
+        
+                var $active = $('.wizard .nav-tabs li.active');
+                prevTab($active);
+        
+            });
+        });
+        
+        function nextStep() {
+            var $active = $('.wizard .nav-tabs li.active');
+            $active.next().removeClass('disabled');
+            nextTab($active);
+        }
+        function nextTab(elem) {
+            $(elem).next().find('a[data-toggle="tab"]').click();
+        }
+        function prevTab(elem) {
+            $(elem).prev().find('a[data-toggle="tab"]').click();
+        }
+    </script>
+
+    <script>
+        function copyFunc() {
+        /* Get the text field */
+        var copyText = document.getElementById("genSigHash");
+        
+        /* Select the text field */
+        copyText.select();
+        
+        /* Copy the text inside the text field */
+        document.execCommand("copy");
+        
+        /* Alert the copied text */
+        //   alert("Copied the text: " + copyText.value);
+        } 
+    </script> 
+</body>
+</html>
