@@ -23,7 +23,7 @@
       $_SESSION['id'] = $row['id'];
        header("location: dashboard-corporate.php");
     }else {
-       $error = "Your Login Name or Password is invalid";
+      header("location: login.php");
     }
  }
 

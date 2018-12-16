@@ -27,7 +27,7 @@
     <!-- Header -->
   <?php require'header.php' ?>
     <div class="row mb-4">
-            <div class="sidebar col-xs-12 col-sm-4 col-lg-4 col-xl-3 center-align">
+            <div class="sidebar col-xs-12 col-sm-4 col-lg-4 col-xl-3 center-align" style="height:800px;">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-3 col-sm-6">

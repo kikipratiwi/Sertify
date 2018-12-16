@@ -56,13 +56,17 @@
                                 <div class="w3-third tablink w3-bottombar w3-padding" style="width:120px;">Perusahaan</div>
                               </a>
                             </div>
-                            <form id="register-form" action="login-user.php" method="POST">
+                            <form id="user-form" action="login-user.php" method="POST">
                               <div id="London" class="w3-container user w3-border-red">
                                 <div style="padding: 20px;" >
                                   <label for="email">Email</label>
                                   <input class="form-control mb-2" type="text" id="email" name="email" style="width:100%;">
                                   <label for="pass">Password</label>
                                   <input class="form-control mb-2" type="password" id="pass" name="pass">
+                                </div>
+                                <div class="mt-2">
+                                  <button type="submit" class="btn button-rpeach font-weight-bold mb-2" style="border: 0px; color:#682B5F; font-size: 12pt; height: 50px; width: 130px; border-radius: 50px;">Log In</button>
+                                  <p style="font-size: 12px;">Belum memiliki akun? <a routerLink="login"><span class="font-weight-bol" style="color:#FBBF5B">Daftar</span></a></p>
                                 </div>
                               </div>
                             </form>
@@ -74,10 +78,10 @@
                                   <label for="pass">Password</label>
                                   <input class="form-control mb-2" type="password" id="pass" name="pass">
                                 </div>
-                              </div>
-                              <div class="mt-2">
-                                <button type="submit" class="btn button-rpeach font-weight-bold mb-2" style="border: 0px; color:#682B5F; font-size: 12pt; height: 50px; width: 130px; border-radius: 50px;">Log In</button>
-                                <p style="font-size: 12px;">Belum memiliki akun? <a routerLink="login"><span class="font-weight-bol" style="color:#FBBF5B">Daftar</span></a></p>
+                                <div class="mt-2">
+                                  <button type="submit" class="btn button-rpeach font-weight-bold mb-2" style="border: 0px; color:#682B5F; font-size: 12pt; height: 50px; width: 130px; border-radius: 50px;">Log In</button>
+                                  <p style="font-size: 12px;">Belum memiliki akun? <a routerLink="login"><span class="font-weight-bol" style="color:#FBBF5B">Daftar</span></a></p>
+                                </div>
                               </div>
                             </form>
                         </div>
