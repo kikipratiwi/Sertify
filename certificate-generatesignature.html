@@ -112,7 +112,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary genSigButton" id="genSigSubmit">Generate Signature</button>
+                        <button type="submit" class="btn btn-primary genSigButton" id="genSigSubmit" onClick="changeStat()">Generate Signature</button>
                     </div>
 
                     <div class="form-group">
@@ -129,10 +129,10 @@
                         <li><button type="button" class="btn btn-default prev-step" id="prevBtn" onClick="toggleFunc()">Previous</button></li>
                     </ul> -->
             </form>
-            <form method="POST" action="http://localhost/sertify/public/process/save-digitalSig.php">
+            <form method="POST" id="save-digitalSig-form" action="http://localhost/sertify/public/process/save-digitalSig.php">
                 <input type="hidden" name="digital_signature"></input>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary" name="done">Done</button>
+                    <button type="button" class="btn btn-primary" id="done" onclick="submitform()">Done</button>
                 </div>
             </form>
         </div>
@@ -237,7 +237,7 @@
     
         <div class="row">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reject_modal" data-whatever="@mdo">Reject</button>
-            <button type="submit" class="btn btn-success" onClick="toggleFunc()">Continue</button>
+            <button type="submit" class="btn btn-success" onClick="confirmation()">Lanjutkan</button>
         </div>
     
         <div class="modal fade" id="reject_modal" tabindex="-1" role="dialog" aria-labelledby="reject_modalLabel" aria-hidden="true">
@@ -293,14 +293,38 @@
         //     btn.disabled = true;
         // }
 
-        function confirmation() {
-            var message = "Apakah anda yakin akan memvalidasi sertifikat ini?";
-            if (confirm("Press a button!")) {
-                txt = "You pressed OK!";
-            } else {
-                txt = "You pressed Cancel!";
+        var genSigButton = false;
+        
+        function changeStat() {
+            genSigButton = true;
+        }
+
+        function submitform()
+        {
+            var genSigHashVal = $("#genSigHash");
+            var isSigPresent = genSigHashVal.val().length > 0;
+            
+            if(genSigButton && isSigPresent) {
+                alert("hai");
+                document.getElementById("save-digitalSig-form").submit();
+            }else {
+                // alert("hell");
+                return false;
             }
-            document.getElementById("demo").innerHTML = txt;
+        }
+
+        function confirmation() {
+            var preview = document.getElementById("certificate-preview");
+            var sigForm = document.getElementById("s-genSigForm"); 
+            var message = "Apakah anda yakin akan memvalidasi sertifikat ini?";
+            
+            if (confirm(message)) {
+                sigForm.style.display = "block";
+                preview.style.display = "none";
+            } else {
+                preview.style.display = "block";
+                sigForm.style.display = "none";
+            }
         }
 
         function toggleFunc() {
