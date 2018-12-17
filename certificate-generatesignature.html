@@ -11,13 +11,10 @@
   <title>Sertify - Generate Signature</title>
   
   <link rel="canonical" href="https://docstamp.it">
-  <link href="/css/style.css" rel="stylesheet">
   <link rel="shortcut icon" href="assets/favicon.ico">
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39494276-10"></script>
   
   <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-  <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen" href="css/style.css"/>
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -34,6 +31,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >
     
   <script src="main.js"></script>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
   
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -107,7 +105,7 @@
 
                     <div class="form-group">
                         <label>The file you notarized</label>
-                        <input type="file" class="btn btn-default" id="genSigFile">
+                        <input type="file" class="btn btn-default" id="genSigFile" value="assets/">
                         <small class='help-block with-errors'></small>
                         
                     </div>
@@ -236,7 +234,7 @@
             <h3>Preview Sertifikat</h3>
             <p>Nomor Sertifikat: 123/456/123/2018</p>
 
-        <iframe src="http://localhost/sertify/public/embed.php" style="width:1300px; height: 600px;" frameborder="0"></iframe>
+        <embed id="certificate-embed" src="" type="application/pdf" width="80%" height="600px" id="fileToHash">
     
         <div class="row">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reject_modal" data-whatever="@mdo">Reject</button>
@@ -362,6 +360,16 @@
         /* Alert the copied text */
         //   alert("Copied the text: " + copyText.value);
         } 
+    </script>
+    <script type="text/javascript" src="assets/data/users/certificate.json"></script>
+    <script>
+        fetch("assets/data/users/certificate.json").then(function(resp) {
+            return resp.json();
+        }).then(function(data){
+            console.log(data.certificate[0].file_name);
+            var link = document.getElementById("certificate-embed");
+            link.setAttribute("src","assets/data/users/certificates/" + data.certificate[0].file_name);
+        });        
     </script>
 
 </body>
