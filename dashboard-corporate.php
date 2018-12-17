@@ -1,7 +1,6 @@
 <?php
     session_start();
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,8 +30,51 @@
 </head>
 <body>
     <!-- Header -->
-  <?php require'header.php' ?>
-
+  <div class="navbar navbar-expand-lg navbar-dark nav-gradient nav-size-md gap fixed-top">
+  
+        <!-- Logo Brand Navbar -->  
+        <div class="col-xl-2">
+            <a href="index.html" class="navbar-brand" style="margin-left:80px"><img style="height: 40px;" src="assets/img//sertify-logotype.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+          <!-- Navbar -->
+        <div class="col-xl-7 d-flex justify-content-center margin-top-xs collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">HOME</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="faq.html">F.A.Q</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="how.html">HOW IT WORKS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="corporate.html">CORPORATE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="pricing.html">PRICING</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="certificate-verification.php">VERIFIKASI</a>
+                </li>
+                <li class="nav-item">
+                    
+                </li>
+            </ul>
+          </div>
+        <!-- Button -->
+            <ul class="col-xl-3 nav navbar-nav mt-4 mr-3">
+                <li class="nav-item">
+                  <a class="button-rpeach font-weight-bold nav-link" href="/login.html">LOG IN</a>
+                </li>
+                <li>
+                  <a class="button-rpeach font-weight-bold nav-link" href="/index.html">SIGN UP</a>
+                </li>
+              </ul>
+      </div>
     <div class="row mb-4">
             <div class="sidebar col-xs-12 col-sm-4 col-lg-4 col-xl-3 center-align" style="height:900px;">
                     <div class="container-fluid">
@@ -42,9 +84,9 @@
                                     <img src="assets/img//profile/human.jpg" alt="" class="picture">
                                     <div class="back-shape">
                                         <span class="sub-title font-weight-bold">Corporate :</span>
-                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?></h3>
+                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?><</h3>
                                         <span class="sub-title font-weight-bold">ID Corporate :</span>
-                                        <p> <span class="balance font-weight-bold">192818237</span></p>
+                                        <p> <span class="balance font-weight-bold"><?php echo $_SESSION['id']; ?><</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -74,38 +116,38 @@
                                                     <table class="table table-striped">
                                                         <thead>
                                                             <tr>
+                                                                <th>NO.</th>
                                                                 <th>Tanggal</th>
-                                                                <th>Nama Pemohon</th>
                                                                 <th>No. Sertifikat</th>
                                                                 <th></th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <td>0001</td>
-                                                                <td>Product Name 1</td>
-                                                                <td>Customer 1</td>
-                                                                <td><button type="button" class="btn btn-info btn-sm btn-block button-rpeach font-weight-bold" style="border-radius:50px;" data-toggle="modal" data-target="#exampleModalLong">VIEW</button></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>0002</td>
-                                                                <td>Product Name 2</td>
-                                                                <td>Customer 2</td>
-                                                                <td><button type="button" class="btn btn-info btn-sm btn-block button-rpeach font-weight-bold" style="border-radius:50px;" data-toggle="modal" data-target="#exampleModalLong">VIEW</button></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>0003</td>
-                                                                <td>Product Name 3</td>
-                                                                <td>Customer 3</td>
-                                                                <td><button type="button" class="btn btn-info btn-sm btn-block button-rpeach font-weight-bold" style="border-radius:50px;" data-toggle="modal" data-target="#exampleModalLong">VIEW</button></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>0004</td>
-                                                                <td>Product Name 4</td>
-                                                                <td>Customer 4</td>
-                                                                <td><button type="button" class="btn btn-info btn-sm btn-block button-rpeach font-weight-bold" style="border-radius:50px;" data-toggle="modal" data-target="#exampleModalLong">VIEW</button></td>
-                                                            </tr>
-                                                        </tbody>
+                                                        <?php
+                                                        $id = $_SESSION['id'];
+                                                                $conn = mysqli_connect("localhost", "root", "","db_sertify");
+                                                                if ($conn-> connect_error){
+                                                                    die("Connection failed :".$conn-> connect_error);
+                                                                }
+                                                        $sql = "SELECT id,certificates.number as numb, upload_at from certificates where id = $id";
+                                                        $result = $conn-> query($sql);
+
+                                                        if($result-> num_rows > 0){
+                                                            while ($row = $result-> fetch_assoc()){
+                                                                echo "<tr>
+                                                                        <td>". $row["id"]. "</td>
+                                                                        <td>". $row["numb"]. "</td>
+                                                                        <td>". $row["upload_at"] ."</td>";
+                                                              
+                                                                echo "<td><a href=''> <button type='button' >VIEW</button></a></td></tr>";
+
+                                                            }
+                                                        }else {
+                                                            echo "0 result";
+                                                        }
+                                                        $conn-> close();
+                                                        ?>                                                             
+                                                               </tbody>
                                                     </table>
                                                 </div>
                                             </div>

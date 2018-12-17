@@ -1,0 +1,9 @@
+data = '[{"name" : "John Doe", "age" : "25"},{"name" : "Jane Doe", "age" : "20"}]';
+
+<script type="text/javascript" src="data.json"></script>
+
+var userdata = JSON.parse(data);
+var user1_name = userdata[0].name;
+var user1_age = userdata[0].age;
+var user2_name = userdata[1].name;
+var user2_age = userdata[1].age;
