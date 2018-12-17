@@ -84,9 +84,9 @@
                                     <img src="assets/img//profile/human.jpg" alt="" class="picture">
                                     <div class="back-shape">
                                         <span class="sub-title font-weight-bold">Corporate :</span>
-                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?><</h3>
+                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?></h3>
                                         <span class="sub-title font-weight-bold">ID Corporate :</span>
-                                        <p> <span class="balance font-weight-bold"><?php echo $_SESSION['id']; ?><</span></p>
+                                        <p> <span class="balance font-weight-bold"><?php echo $_SESSION['id']; ?></span></p>
                                     </div>
                                 </div>
                             </div>
