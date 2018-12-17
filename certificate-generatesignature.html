@@ -131,7 +131,9 @@
                     </ul> -->
             </form>
             <form method="POST" id="save-digitalSig-form" action="http://localhost/sertify/public/process/save-digitalSig.php">
-                <input type="hidden" name="digital_signature"></input>
+                <input type="hidden" name="digital_signature">
+                <input type="hidden" name="status" value="S">
+                <input type="hidden" name="user_id">
                 <div class="form-group">
                     <button type="button" class="btn btn-primary" id="done" onclick="submitform()">Done</button>
                 </div>
@@ -246,6 +248,7 @@
                 <form method="POST" id="reject-certificate-form" action="http://localhost/sertify/public/process/reject-certificate.php">
                     <div class="modal-content">
                         <input type="hidden" name="certificateId">
+                        <input type="hidden" name="status" value="R">
                         <div class="modal-header">
                             <h5 class="modal-title" id="reject_modalLabel">Apakah anda yakin akan menolak sertifikat ini?</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -300,6 +303,7 @@
             var isSigPresent = genSigHashVal.val().length > 0;
             
             if(genSigButton && isSigPresent) {
+                document.getElementById("digital_signature").val=document.getElementById("genSigHash").val;
                 document.getElementById("save-digitalSig-form").submit();
             }else {
                 return false;
