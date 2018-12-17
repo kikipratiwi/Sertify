@@ -32,24 +32,21 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="box-1">
-                                    <img src="assets/img//profile/human.jpg" alt="" class="picture">
-                                    <div class="back-shape">
+                                    <div class="bs">
                                         <span class="sub-title font-weight-bold">Hello</span>
                                         <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?></h3>
-                                        <span class="sub-title font-weight-bold">Your Balance :</span>
-                                        <p><span class="currency font-weight-bold">ETH  </span>   <span class="balance font-weight-bold">29.392.921</span></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6" style="margin-top:500px; position: fixed">
+                    <div class="col-md-3 col-sm-6" style="margin-top:375px; position: fixed; height : 900px;">
                             <nav>                                    
                                 <ul class="nav nav-pills flex-column sidebar-nav">
                                     <li class="nav-item"><a href="dashboard-status.php" class="nav-link font-weight-bold"><em class="fa fa-dashboard"></em> Status </a></li>
                                     <li class="nav-item"><a href="dashboard-verified.php" class="nav-link active font-weight-bold"><em class="fa fa-info"></em> Verified </a></li>
                                     <li class="nav-item"><a href="dashboard-rejected.php" class="nav-link font-weight-bold"><em class="fa fa-times-circle"></em> Reject </a></li>
-                                    <li class="nav-item"><a href="dashboard-pending.html" class="nav-link font-weight-bold"><em class="fa fa-pause"></em> Pending </a></li>
+                                    <li class="nav-item"><a href="dashboard-pending.php" class="nav-link font-weight-bold"><em class="fa fa-pause"></em> Pending </a></li>
                                 </ul>
                             </nav>
                         </div>
