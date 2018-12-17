@@ -18,15 +18,15 @@
     $date = (new \DateTime())->format('YmdHis');
     $extension = "txt";
     $filename = $user_id.'-'.$date.'_digsignature.' . $extension;
-    $directory_path = '../assets/data/users/digital_signature/'.$filename;
+    $directory_path = '../assets/data/users/digital_signatures/'.$filename;
     $file = @fopen($directory_path,"x");
     if($file)
     {
-        echo fwrite($file,$digital_signature); 
+        fwrite($file,$digital_signature); 
         fclose($file); 
     }
 
-    $query = "UPDATE certificates SET digital_signature = '$digital_signature',  status= '$status' , verified_at= '$verified_at' WHERE  id = '$id'";
+    $query = "UPDATE certificates SET digital_signature = '$filename',  status= '$status' , verified_at= '$verified_at' WHERE  id = '$id'";
     $execute = mysqli_query($conn,$query);
 
     if (!$execute) {

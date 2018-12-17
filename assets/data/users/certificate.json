@@ -1,9 +1,1 @@
-data = '[{"name" : "John Doe", "age" : "25"},{"name" : "Jane Doe", "age" : "20"}]';
-
-<script type="text/javascript" src="data.json"></script>
-
-var userdata = JSON.parse(data);
-var user1_name = userdata[0].name;
-var user1_age = userdata[0].age;
-var user2_name = userdata[1].name;
-var user2_age = userdata[1].age;
+[{"user_id":"1","certificate_number":"001\/324\/2017\/232","file_name":"2018-12-11130552_0013242017232_certificate.pdf"}]

@@ -131,7 +131,7 @@
                     </ul> -->
             </form>
             <form method="POST" id="save-digitalSig-form" action="http://localhost/sertify/public/process/save-digitalSig.php">
-                <input type="hidden" name="digital_signature">
+                <input type="hidden" name="digital_signature" id="digital_signature">
                 <input type="hidden" name="status" value="S">
                 <input type="hidden" name="user_id">
                 <div class="form-group">
@@ -303,7 +303,9 @@
             var isSigPresent = genSigHashVal.val().length > 0;
             
             if(genSigButton && isSigPresent) {
-                document.getElementById("digital_signature").val=document.getElementById("genSigHash").val;
+                var digsig = document.getElementById("digital_signature");
+                digsig.value = document.getElementById("genSigHash").value;
+                
                 document.getElementById("save-digitalSig-form").submit();
             }else {
                 return false;
