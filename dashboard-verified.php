@@ -26,30 +26,27 @@
 <body>
     <!-- Header -->
   <?php require'header.php' ?>
-    <div class="row mb-4">
+  <div class="row mb-4">
             <div class="sidebar col-xs-12 col-sm-4 col-lg-4 col-xl-3 center-align" style="height:800px;">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="box-1">
                                     <img src="assets/img//profile/human.jpg" alt="" class="picture">
-                                    <div class="back-shape">
+                                    <div class="back-shape"><br>
                                         <span class="sub-title font-weight-bold">Hello</span>
-                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?></h3>
-                                        <span class="sub-title font-weight-bold">Your Balance :</span>
-                                        <p><span class="currency font-weight-bold">ETH  </span>   <span class="balance font-weight-bold">29.392.921</span></p>
+                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?> </h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6" style="margin-top:500px; position: fixed">
+                    <div class="col-md-3 col-sm-6" style="margin-top:425px; position: fixed">
                             <nav>                                    
                                 <ul class="nav nav-pills flex-column sidebar-nav">
-                                    <li class="nav-item"><a href="dashboard-status.php" class="nav-link font-weight-bold" hidden><em class="fa fa-dashboard"></em> Status </a></li>
                                     <li class="nav-item"><a href="dashboard-status.php" class="nav-link font-weight-bold"><em class="fa fa-dashboard"></em> Status </a></li>
-                                    <li class="nav-item"><a href="dashboard-verified.php" class="nav-link active font-weight-bold"><em class="fa fa-info"></em> Verified </a></li>
-                                    <li class="nav-item"><a href="dashboard-rejected.html" class="nav-link font-weight-bold"><em class="fa fa-times-circle"></em> Reject </a></li>
+                                    <li class="nav-item"><a href="dashboard-verified.php" class="nav-link  active font-weight-bold"><em class="fa fa-info"></em> Verified </a></li>
+                                    <li class="nav-item"><a href="dashboard-rejected.php" class="nav-link font-weight-bold"><em class="fa fa-times-circle"></em> Reject </a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -71,22 +68,24 @@
                     $sql = "SELECT certificates.number as number,
                     certificates.digital_signature as ds,
                     agencies.name as name,
-                    certificates.upload_at
+                    certificates.upload_at,
+                    certificates.verified_at
                     FROM certificates, agencies
                     WHERE certificates.agency_id = agencies.id AND certificates.status = 's' AND certificates.user_id = $id";
                     $result = mysqli_query($conn, $sql);
                     
                     
                 ?>
-
+                
                 <div class="col-xs-12 col-sm-8 col-lg-8 col-xl-9 pt-3 pl-4 pr-5" style="margin-top:50px;">
                         <table id="example" class="table table-hover" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Nomor Sertifikat</th>
-                                        <th>Digital Signature</th>
                                         <th>Instansi</th>
                                         <th>Upload date</th>
+                                        <th>Verified at</th>
+                                        <th>Digital Signature</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -100,10 +99,10 @@
                                     echo "
                                         <tr>
                                             <td>" . $row["number"]. "</td>
-                                            <td>" . $row["ds"]. "</td>
                                             <td>" . $row["name"]. "</td>
                                             <td>" . $row["upload_at"]. "</td>
-                                            <td><button type='button' class='btn btn-info btn-sm btn-block button-rpeach font-weight-bold' style='border-radius:50px;' data-toggle='modal' data-target='#exampleModalLong'>Copy</button></td>
+                                            <td>" . $row["verified_at"]. "</td>
+                                            <td><button type='button' class='btn btn-info btn-sm btn-block button-rpeach font-weight-bold' style='border-radius:50px;' data-toggle='modal' data-target='#exampleModalLong'>Download</button></td>
                                         </tr>";
                                     }
                                     } else {
@@ -114,7 +113,7 @@
                                     ?>
                             </tbody>
                         </table>
-                  </div>
+            </div>
     </div>
     <footer id="footer" class="page-footer unique-color-dark mt-4 fixed-bottom" style="height:35px;">
             <!--/.Footer Links-->

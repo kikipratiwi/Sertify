@@ -584,14 +584,25 @@ border-color: #F4B554;
 box-shadow: 0px 6px 10px 2px rgba(0, 0, 0, 0.3);
 }
 
-.back-shape{
+.bs{
 width: 100%;
-height: 75%;
+height: 70%;
 background: #ffffff;
 margin-top: 75px; 
 border-radius: 20%;
 display: inline-block;
-padding-top: 35%;
+padding-top: 45%;
+box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.3);
+}
+
+.back-shape{
+width: 100%;
+height: 50%;
+background: #ffffff;
+margin-top: 75px; 
+border-radius: 10%;
+display: inline-block;
+padding-top: 25%;
 box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.3);
 }
 

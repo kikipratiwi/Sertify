@@ -31,7 +31,7 @@
           </ul>
         </div>
         <!-- Button -->
-            <ul class="col-xl-3 nav navbar-nav mt-4 mr-3">
+            <ul class="col-xl-3 nav navbar-nav mt-4" style="margin-left:80px;">
                 <?php
                     if(!isset($_SESSION['login'])){
                         echo "<li class=\"nav-item\">
