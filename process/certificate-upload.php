@@ -35,9 +35,8 @@ if(isset($_POST['upload'])){
                 echo '<script language="javascript">';
                 echo 'alert("Data berhasil diupload")';
                 echo '</script>';
-                echo 'hehe';
 
-                // header('location:../dashboard-pending.php');
+                header('location:../dashboard-pending.php');
             } else {
                 echo 'GAGAL MENGUPLOAD FILE';
             }
