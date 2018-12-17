@@ -44,7 +44,7 @@
                 <div class="col-md-3">
                     <div style="margin-top:200px">
                       <!-- Ersaad -->
-                          <div class="text-center signup animated fadeInLeft text-white">
+                          <div class="text-center signin animated fadeInLeft text-white">
                             <div class="pt-3">
                               <h3 class="mt-3 mb-2 font-weight-bold" style="color:#FBBF5B">LOG IN</h3>
                             </div>
