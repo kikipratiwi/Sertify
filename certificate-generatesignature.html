@@ -98,7 +98,7 @@
     </header>  
     
     <div class="container">
-        <div class="row" id="s-genSigForm">
+        <div class="row" id="s-genSigForm" style="display:none;">
             <form role="form" id="genSigForm">
                     <h3>Generate Signature to Prove that you Stamped Document</h3>
                     <p>You can generate a cryptographic signature of the document you notarized to prove to others that you are indeed the signer.</p>
@@ -138,7 +138,7 @@
                 </div>
             </form>
         </div>
-        <div class="row" id="s-stampForm">
+        <div class="row" id="s-stampForm" style="display:none; visibility:hidden;">
             <form role="form" id="stampForm">
                 <h3>Stamp a Document</h3>
                 <p>Notarize the document, to later prove that you cryptographically signed it.</p>
@@ -165,7 +165,7 @@
                 </ul>
             </form>
         </div>
-        <div class="row" id="s-verifySigForm">
+        <div class="row" id="s-verifySigForm" style="display:none; visibility:hidden;">
             <form role="form" id="verifySigForm">
                     <h3>Verify Signature</h3>
                     <p>You can verify that the signature signer actually owns that document they claim to own.</p>
@@ -191,7 +191,7 @@
                     </div>
             </form>
         </div>                    
-        <div class="row" id="s-checkForm">              
+        <div class="row" id="s-checkForm" style="display:none; visibility:hidden;">              
             <form id="checkForm">
                 <h3>Check Stamper of Document</h3>
                 <p>See who the signer of the document is.</p>
@@ -233,7 +233,7 @@
 
     <div class="container" id="certificate-preview">
             <h3>Preview Sertifikat</h3>
-            <p>Nomor Sertifikat: 123/456/123/2018</p>
+            <p>Nomor Sertifikat: <span id="NomorSertifikat"></span></p>
 
         <embed id="certificate-embed" src="" type="application/pdf" width="80%" height="600px" id="fileToHash">
     
@@ -374,6 +374,7 @@
             var user_id = document.getElementById("user_id").value = data.certificate[0].user_id;
             var cer_id = document.getElementById("certificate_id").value = data.certificate[0].id;
             var cerId = document.getElementById("certificateId").value = data.certificate[0].id;
+            document.getElementById("NomorSertifikat").innerHTML = data.certificate[0].certificate_number;
 
         });        
     </script>
