@@ -42,7 +42,7 @@
               <a class="nav-link" href="how.html">HOW IT WORKS</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="corporate.html">CORPORATE</a>
+              <a class="nav-link" href="corporate.php">CORPORATE</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="http://localhost:3000/certificate-verification.html">VERIFIKASI</a>

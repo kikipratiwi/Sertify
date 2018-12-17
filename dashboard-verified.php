@@ -102,7 +102,7 @@
                                             <td>" . $row["name"]. "</td>
                                             <td>" . $row["upload_at"]. "</td>
                                             <td>" . $row["verified_at"]. "</td>
-                                            <td><button type='button' class='btn btn-info btn-sm btn-block button-rpeach font-weight-bold' style='border-radius:50px;' data-toggle='modal' data-target='#exampleModalLong'><a href='assets/data/users/certificates/". $row["ds"]."' >Download</a></button></td>
+                                            <td><a href='assets/data/users/certificates/". $row["ds"]."'><button type='button' class='btn btn-info btn-sm btn-block button-rpeach font-weight-bold' style='border-radius:50px;' data-toggle='modal' data-target='#exampleModalLong'>Download</button></a></td>
                                         </tr>";
                                     }
                                     } else {

@@ -27,7 +27,7 @@
                       <li class=\"nav-item\">
                           <a class=\"nav-link\" href=\"http://localhost:3000/certificate-verification.html\">VERIFIKASI</a>
                         </li>
-                        <li class=\"nav-item\">  
+                      <li class=\"nav-item\">   
                       </li>";
                     }else{
                         echo "<li class=\"nav-item\">
@@ -46,6 +46,10 @@
                           <a class=\"nav-link\" href=\"http://localhost:3000/certificate-verification.html\">VERIFIKASI</a>
                         </li>
                         <li class=\"nav-item\">  
+                        <a class=\"nav-link\" href=\"certificate-upload.php\">REQUEST APPROVAL</a> 
+                      </li>
+                        <li class=\"nav-item\">  
+                        <a class=\"nav-link\" href=\"dashboard-status.php\">DASHBOARD</a> 
                       </li>";
                     }
                 ?>
