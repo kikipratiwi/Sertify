@@ -68,8 +68,8 @@
                                   <input class="form-control mb-2" type="password" id="confirm password" name="confirm_password">
                                 </div>
                                 <div class="mt-2">
-                                  <button type="submit" class="btn button-rpeach font-weight-bold mb-2" style="border: 0px; color:#682B5F; font-size: 12pt; height: 50px; width: 130px; border-radius: 50px;">Log In</button>
-                                  <p style="font-size: 12px;">Belum memiliki akun? <a routerLink="login"><span class="font-weight-bol" style="color:#FBBF5B">Daftar</span></a></p>
+                                  <button type="submit" class="btn button-rpeach font-weight-bold mb-2" style="border: 0px; color:#682B5F; font-size: 12pt; height: 50px; width: 150px; border-radius: 50px;">Sign Up</button>
+                                  <p style="font-size: 12px;">Sudah memiliki akun? <a routerLink="login"><span class="font-weight-bol" style="color:#FBBF5B">Login</span></a></p>
                                 </div>
                               </div>
                             </form>
@@ -77,7 +77,7 @@
                               <div id="corporate-registration" class="w3-container user" style="display:none">
                                 <div style="padding: 20px;" >
                                   <label for="email">ID Perusahaan</label>
-                                  <input class="form-control mb-2" type="text" id="id" name="id" style="width:100%;">
+                                  <input class="form-control mb-2" type="text" id="email" name="email" style="width:100%;">
                                   <label for="pass">Password</label>
                                   <input class="form-control mb-2" type="password" id="pass" name="password" required pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
                                   <p style="font-size: 10px;">&nbsp; Min 8 Karakter, harus memiliki kombinasi dari huruf kapital, angka dan simbol</p>
@@ -85,8 +85,8 @@
                                   <input class="form-control mb-2" type="password" id="confirm password" name="confirm_password">
                                 </div>
                                 <div class="mt-2">
-                                  <button type="submit" class="btn button-rpeach font-weight-bold mb-2" style="border: 0px; color:#682B5F; font-size: 12pt; height: 50px; width: 130px; border-radius: 50px;">Log In</button>
-                                  <p style="font-size: 12px;">Belum memiliki akun? <a routerLink="login"><span class="font-weight-bol" style="color:#FBBF5B">Daftar</span></a></p>
+                                  <button type="submit" class="btn button-rpeach font-weight-bold mb-2" style="border: 0px; color:#682B5F; font-size: 12pt; height: 50px; width: 150px; border-radius: 50px;">Sign Up</button>
+                                  <p style="font-size: 12px;">Sudah memiliki akun? <a routerLink="login"><span class="font-weight-bol" style="color:#FBBF5B">Login</span></a></p>
                                 </div>
                               </div>
                             </form>
