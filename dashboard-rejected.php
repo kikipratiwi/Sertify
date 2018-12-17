@@ -86,10 +86,10 @@
                     <div class="col-md-3 col-sm-6" style="margin-top:500px; position: fixed">
                             <nav>                                    
                                 <ul class="nav nav-pills flex-column sidebar-nav">
-                                    <li class="nav-item"><a href="dashboard-status.html" class="nav-link font-weight-bold"><em class="fa fa-dashboard"></em> Status </a></li>
-                                    <li class="nav-item"><a href="dashboard-verified.html" class="nav-link font-weight-bold"><em class="fa fa-info"></em> Verified </a></li>
-                                    <li class="nav-item"><a href="dashboard-rejected.html" class="nav-link font-weight-bold"><em class="fa fa-times-circle"></em> Reject </a></li>
-                                    <li class="nav-item"><a href="dashboard-pending.html" class="nav-link active  font-weight-bold"><em class="fa fa-pause"></em> Pending </a></li>
+                                    <li class="nav-item"><a href="dashboard-status.php" class="nav-link font-weight-bold" hidden><em class="fa fa-dashboard"></em> Status </a></li>
+                                    <li class="nav-item"><a href="dashboard-status.php" class="nav-link font-weight-bold"><em class="fa fa-dashboard"></em> Status </a></li>
+                                    <li class="nav-item"><a href="dashboard-verified.php" class="nav-link font-weight-bold"><em class="fa fa-info"></em> Verified </a></li>
+                                    <li class="nav-item"><a href="dashboard-rejected.html" class="nav-link font-weight-bold active"><em class="fa fa-times-circle"></em> Reject </a></li>
                                 </ul>
                             </nav>
                         </div>

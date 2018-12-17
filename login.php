@@ -56,13 +56,9 @@
                                 <div class="w3-third tablink w3-bottombar w3-padding" style="width:120px;">Perusahaan</div>
                               </a>
                             </div>
-<<<<<<< Updated upstream
-                            <form id="user-form" action="login-user.php" method="POST">
-                              <div id="London" class="w3-container user w3-border-red">
-=======
-                            <form id="register-form-user" action="login-user.php" method="POST">
+                              <form id="register-form-user" action="login-user.php" method="POST">
                               <div id="User-Login" class="w3-container user w3-border-red">
->>>>>>> Stashed changes
+
                                 <div style="padding: 20px;" >
                                   <label for="email">Email</label>
                                   <input class="form-control mb-2" type="text" id="email" name="email" style="width:100%;">
@@ -75,13 +71,9 @@
                                 </div>
                               </div>
                             </form>
-<<<<<<< Updated upstream
-                            <form action="login-corporate.php" method="POST">
-                              <div id="Paris" class="w3-container user" style="display:none">
-=======
                             <form id="register-form-corporate" action="login-corporate.php" method="POST">
                               <div id="Corporate-Login" class="w3-container user" style="display:none">
->>>>>>> Stashed changes
+
                                 <div style="padding: 20px;" >
                                   <label for="email">ID Perusahaan</label>
                                   <input class="form-control mb-2" type="text" id="id" name="id" style="width:100%;">
