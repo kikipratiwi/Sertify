@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="box-1">
-                                    <img src="assets/img//profile/human.jpg" alt="" class="picture">
+                                    <img src="https://www.weact.org/wp-content/uploads/2016/10/Blank-profile.png" alt="" class="picture">
                                     <div class="back-shape"><br>
                                         <span class="sub-title font-weight-bold">Hello</span>
                                         <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?> </h3>
@@ -102,7 +102,7 @@
                                             <td>" . $row["name"]. "</td>
                                             <td>" . $row["upload_at"]. "</td>
                                             <td>" . $row["verified_at"]. "</td>
-                                            <td><button type='button' class='btn btn-info btn-sm btn-block button-rpeach font-weight-bold' style='border-radius:50px;' data-toggle='modal' data-target='#exampleModalLong'>Download</button></td>
+                                            <td><button type='button' class='btn btn-info btn-sm btn-block button-rpeach font-weight-bold' style='border-radius:50px;' data-toggle='modal' data-target='#exampleModalLong'><a href='assets/data/users/certificates/". $row["ds"]."' >Download</a></button></td>
                                         </tr>";
                                     }
                                     } else {

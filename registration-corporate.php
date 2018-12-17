@@ -1,13 +1,13 @@
 <?php
 	require_once('process/connection.php');
 	$Email = $pass = '';
-	$mail = $_POST['email'];
+	$id = $_POST['id'];
 	$pass = $_POST['password'];
 	$message = "invalid username or password";
 
 	if ($_POST["password"] === $_POST["confirm_password"]) {
 		// success!
-		$sql = "INSERT INTO users (email,password) VALUES ('$mail','$pass')";
+		$sql = "INSERT INTO agencies (ID,password) VALUES ('$id','$pass')";
 		$result = mysqli_query($conn, $sql);
 		
 		if($result){header("Location: login.php");}

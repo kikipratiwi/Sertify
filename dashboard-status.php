@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="box-1">
-                                    <img src="assets/img//profile/human.jpg" alt="" class="picture">
+                                    <img src="https://www.weact.org/wp-content/uploads/2016/10/Blank-profile.png" alt="" class="picture">
                                     <div class="back-shape"><br>
                                         <span class="sub-title font-weight-bold">Hello</span>
                                         <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?> </h3>
@@ -126,30 +126,28 @@
                                             </div>
                                         </div>
                                         <div class="card mb-4">
-                <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "db_sertify";
+                                            <?php
+                                                $servername = "localhost";
+                                                $username = "root";
+                                                $password = "";
+                                                $dbname = "db_sertify";
 
-                    // Create connection
-                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+                                                // Create connection
+                                                $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-                    // Check connection
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    $id = $_SESSION['id'];
-                    $sql = "SELECT certificates.id,
-                    certificates.file_name as name,
-                    agencies.name as penerbit,
-                    certificates.note
-                    FROM certificates, agencies
-                    WHERE certificates.agency_id = agencies.id AND certificates.user_id = $id";
-                    $result = mysqli_query($conn, $sql);
-                    
-                    
-                ?>
+                                                // Check connection
+                                                if (!$conn) {
+                                                    die("Connection failed: " . mysqli_connect_error());
+                                                }
+                                                $id = $_SESSION['id'];
+                                                $sql = "SELECT certificates.id,
+                                                certificates.file_name as name,
+                                                agencies.name as penerbit,
+                                                certificates.note
+                                                FROM certificates, agencies
+                                                WHERE certificates.agency_id = agencies.id AND certificates.user_id = $id";
+                                                $result = mysqli_query($conn, $sql);
+                                            ?>
                                             <div class="card-block" style="margin:20px;">
                                                 <h3 class="card-title">Pengajuan Terakhir</h3>
                                                 <div class="table-responsive">

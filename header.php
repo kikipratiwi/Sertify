@@ -10,24 +10,46 @@
         <!-- Navbar -->
         <div class="col-xl-7 d-flex justify-content-center margin-top-xs collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">HOME</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="faq.php">F.A.Q</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="how.php">HOW IT WORKS</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="corporate.php">CORPORATE</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="http://localhost:3000/certificate-verification.html">VERIFIKASI</a>
-              </li>
-              <li class="nav-item">
-                  
-              </li>
+                <?php
+                    if(!isset($_SESSION['login'])){
+                        echo "<li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"login.php\">HOME</a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"faq.php\">F.A.Q</a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"how.php\">HOW IT WORKS</a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"corporate.php\">CORPORATE</a>
+                      </li>
+                      <li class=\"nav-item\">
+                          <a class=\"nav-link\" href=\"http://localhost:3000/certificate-verification.html\">VERIFIKASI</a>
+                        </li>
+                        <li class=\"nav-item\">  
+                      </li>";
+                    }else{
+                        echo "<li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"dashboard-status.php\">HOME</a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"faq.php\">F.A.Q</a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"how.php\">HOW IT WORKS</a>
+                      </li>
+                      <li class=\"nav-item\">
+                        <a class=\"nav-link\" href=\"corporate.php\">CORPORATE</a>
+                      </li>
+                      <li class=\"nav-item\">
+                          <a class=\"nav-link\" href=\"http://localhost:3000/certificate-verification.html\">VERIFIKASI</a>
+                        </li>
+                        <li class=\"nav-item\">  
+                      </li>";
+                    }
+                ?>
+              
           </ul>
         </div>
         <!-- Button -->
@@ -45,7 +67,6 @@
                         <a class=\"button-rpeach font-weight-bold nav-link\" href=\"logout.php\">LOGOUT</a>
                         </li>";
                     }
-                    
                 ?>
               </ul>
       </div>
