@@ -2,11 +2,11 @@
     include "connection.php";
     date_default_timezone_set("Asia/Jakarta");
 
-    // $id = $_POST['no'];
-    $id = 1;
+    $id = $_POST['certificate_id'];
+    // $id = 1;
     $status = $_POST['status'];
-    // $user_id = $_POST['user_id'];
-    $user_id = 1;
+    $user_id = $_POST['user_id'];
+    // $user_id = 1;
     $verified_at = (new \DateTime())->format('Y-m-d H:i:s');
 
     if ($status == "R") {
@@ -25,8 +25,10 @@
         fwrite($file,$digital_signature); 
         fclose($file); 
     }
+    // echo $filename;
 
     $query = "UPDATE certificates SET digital_signature = '$filename',  status= '$status' , verified_at= '$verified_at' WHERE  id = '$id'";
+    // echo $query;
     $execute = mysqli_query($conn,$query);
 
     if (!$execute) {

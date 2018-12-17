@@ -131,7 +131,8 @@
             <form method="POST" id="save-digitalSig-form" action="http://localhost/sertify/public/process/save-digitalSig.php">
                 <input type="hidden" name="digital_signature" id="digital_signature">
                 <input type="hidden" name="status" value="S">
-                <input type="hidden" name="user_id">
+                <input type="hidden" name="user_id" id="user_id">
+                <input type="hidden" name="certificate_id" id="certificate_id">
                 <div class="form-group">
                     <button type="button" class="btn btn-primary" id="done" onclick="submitform()">Done</button>
                 </div>
@@ -245,7 +246,7 @@
             <div class="modal-dialog" role="document">
                 <form method="POST" id="reject-certificate-form" action="http://localhost/sertify/public/process/reject-certificate.php">
                     <div class="modal-content">
-                        <input type="hidden" name="certificateId">
+                        <input type="hidden" name="certificateId" id="certificateId">
                         <input type="hidden" name="status" value="R">
                         <div class="modal-header">
                             <h5 class="modal-title" id="reject_modalLabel">Apakah anda yakin akan menolak sertifikat ini?</h5>
@@ -369,6 +370,11 @@
             console.log(data.certificate[0].file_name);
             var link = document.getElementById("certificate-embed");
             link.setAttribute("src","assets/data/users/certificates/" + data.certificate[0].file_name);
+            
+            var user_id = document.getElementById("user_id").value = data.certificate[0].user_id;
+            var cer_id = document.getElementById("certificate_id").value = data.certificate[0].id;
+            var cerId = document.getElementById("certificateId").value = data.certificate[0].id;
+
         });        
     </script>
 

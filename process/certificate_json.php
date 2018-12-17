@@ -13,7 +13,7 @@
       $certificatenumber=$row['number'];
       $filename=$row['file_name']; 
     
-      $posts[] = array('user_id'=> $userid, 'certificate_number'=> $certificatenumber, 'file_name'=> $filename);
+      $posts[] = array('id'=>$id, 'user_id'=> $userid, 'certificate_number'=> $certificatenumber, 'file_name'=> $filename);
     } 
     
     $response['certificate'] = $posts;
@@ -28,5 +28,5 @@
     fwrite($file, $info);
     fclose($file);
 
-    header('location:../certificate-generatesignature.html');
+    header('location:http://localhost:3000/certificate-generatesignature.html');
 ?> 

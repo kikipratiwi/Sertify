@@ -2,8 +2,8 @@
     include "connection.php";
     date_default_timezone_set("Asia/Jakarta");
 
-    // $id = $_POST['no'];
-    $id = 1;
+    $id = $_POST['id'];
+    // $id = 1;
     $status = $_POST['status'];
     $verified_at = (new \DateTime())->format('Y-m-d H:i:s');
 
