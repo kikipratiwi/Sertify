@@ -113,7 +113,7 @@
                                                                 if ($conn-> connect_error){
                                                                     die("Connection failed :".$conn-> connect_error);
                                                                 }
-                                                        $sql = "SELECT id,certificates.number as numb, upload_at from certificates where id = $id";
+                                                        $sql = "SELECT id,certificates.number as numb, upload_at from certificates where agency_id = $id";
                                                         $result = $conn-> query($sql);
                                                         $nomor=0;
                                                         if($result-> num_rows > 0){
