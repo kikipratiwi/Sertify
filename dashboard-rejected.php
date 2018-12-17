@@ -85,7 +85,6 @@
                                         <th>Instansi</th>
                                         <th>Upload date</th>
                                         <th>Verified at</th>
-                                        <th>Digital Signature</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -102,7 +101,6 @@
                                             <td>" . $row["name"]. "</td>
                                             <td>" . $row["upload_at"]. "</td>
                                             <td>" . $row["verified_at"]. "</td>
-                                            <td><button type='button' class='btn btn-info btn-sm btn-block button-rpeach font-weight-bold' style='border-radius:50px;' data-toggle='modal' data-target='#exampleModalLong'>Download</button></td>
                                         </tr>";
                                     }
                                     } else {

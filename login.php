@@ -39,7 +39,7 @@
                           Blockchain. Dengan menggunakan blockchain, Anda tidak perlu khawatir akan adanya pemalsuan dan Anda tidak perlu melegalisir 
                           data yang Anda miliki berulang kali.</p>
                     </div>
-                    <a class="ml-3 button-purple nav-link font-weight-bold" href="login.html" style="color:#FBBF5B">PELAJARI LEBIH LANJUT</a>
+                    <a class="ml-3 button-purple nav-link font-weight-bold" href="how.php" style="color:#FBBF5B">PELAJARI LEBIH LANJUT</a>
                 </div>
                 <div class="col-md-3">
                     <div style="margin-top:200px">
@@ -57,7 +57,7 @@
                               </a>
                             </div>
                             <form id="user-form" action="login-user.php" method="POST">
-                              <div id="London" class="w3-container user w3-border-red">
+                              <div id="User-Login" class="w3-container user w3-border-red">
                                 <div style="padding: 20px;" >
                                   <label for="email">Email</label>
                                   <input class="form-control mb-2" type="text" id="email" name="email" style="width:100%;">
@@ -71,7 +71,7 @@
                               </div>
                             </form>
                             <form action="login-corporate.php" method="POST">
-                              <div id="Paris" class="w3-container user" style="display:none">
+                              <div id="Corporate-Login" class="w3-container user" style="display:none">
                                 <div style="padding: 20px;" >
                                   <label for="email">ID Perusahaan</label>
                                   <input class="form-control mb-2" type="text" id="id" name="id" style="width:100%;">

@@ -126,30 +126,30 @@
                                             </div>
                                         </div>
                                         <div class="card mb-4">
-                <?php
-                    $servername = "localhost";
-                    $username = "root";
-                    $password = "";
-                    $dbname = "db_sertify";
+                                            <?php
+                                                $servername = "localhost";
+                                                $username = "root";
+                                                $password = "";
+                                                $dbname = "db_sertify";
 
-                    // Create connection
-                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+                                                // Create connection
+                                                $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-                    // Check connection
-                    if (!$conn) {
-                        die("Connection failed: " . mysqli_connect_error());
-                    }
-                    $id = $_SESSION['id'];
-                    $sql = "SELECT certificates.id,
-                    certificates.file_name as name,
-                    agencies.name as penerbit,
-                    certificates.note
-                    FROM certificates, agencies
-                    WHERE certificates.agency_id = agencies.id AND certificates.user_id = $id";
-                    $result = mysqli_query($conn, $sql);
-                    
-                    
-                ?>
+                                                // Check connection
+                                                if (!$conn) {
+                                                    die("Connection failed: " . mysqli_connect_error());
+                                                }
+                                                $id = $_SESSION['id'];
+                                                $sql = "SELECT certificates.id,
+                                                certificates.file_name as name,
+                                                agencies.name as penerbit,
+                                                certificates.note
+                                                FROM certificates, agencies
+                                                WHERE certificates.agency_id = agencies.id AND certificates.user_id = $id";
+                                                $result = mysqli_query($conn, $sql);
+                                                
+                                                
+                                            ?>
                                             <div class="card-block" style="margin:20px;">
                                                 <h3 class="card-title">Pengajuan Terakhir</h3>
                                                 <div class="table-responsive">
