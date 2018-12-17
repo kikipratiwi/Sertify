@@ -22,9 +22,11 @@
     // fwrite($fp, json_encode($response));
     // fclose($fp);
 
-    $json = $posts;
+    $json = $response;
     $info = json_encode($json);
     $file = fopen('../assets/data/users/certificate.json','w+') or die("File not found");
     fwrite($file, $info);
-    fclose($file);exit;
+    fclose($file);
+
+    header('location:../certificate-generatesignature.html');
 ?> 
