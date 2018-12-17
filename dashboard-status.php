@@ -39,7 +39,7 @@
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="box-1">
-                                    <img src="assets/img//profile/human.jpg" alt="" class="picture">
+                                    <img src="https://www.weact.org/wp-content/uploads/2016/10/Blank-profile.png" alt="" class="picture">
                                     <div class="back-shape"><br>
                                         <span class="sub-title font-weight-bold">Hello</span>
                                         <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?> </h3>
@@ -147,8 +147,6 @@
                                                 FROM certificates, agencies
                                                 WHERE certificates.agency_id = agencies.id AND certificates.user_id = $id";
                                                 $result = mysqli_query($conn, $sql);
-                                                
-                                                
                                             ?>
                                             <div class="card-block" style="margin:20px;">
                                                 <h3 class="card-title">Pengajuan Terakhir</h3>

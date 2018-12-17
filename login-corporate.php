@@ -24,6 +24,7 @@
        header("location: dashboard-corporate.php");
     }else {
       header("location: login.php");
+      
     }
  }
 

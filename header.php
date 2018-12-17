@@ -29,7 +29,7 @@
                         </li>
                         <li class=\"nav-item\">  
                       </li>";
-                    }else {
+                    }else{
                         echo "<li class=\"nav-item\">
                         <a class=\"nav-link\" href=\"dashboard-status.php\">HOME</a>
                       </li>

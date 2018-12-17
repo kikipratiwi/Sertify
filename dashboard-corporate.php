@@ -30,19 +30,50 @@
 </head>
 <body>
     <!-- Header -->
-  <?php require'header.php' ?>
-    <div class="row mb-4">
+    <div class="navbar navbar-expand-lg navbar-dark nav-gradient nav-size-md gap fixed-top">
+  
+  <!-- Logo Brand Navbar -->  
+  <div class="col-xl-2">
+    <a href="#" class="navbar-brand" style="margin-left:80px"><img style="height: 40px;" src="assets/img//sertify-logotype.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+  </div>
+    <!-- Navbar -->
+    <div class="col-xl-7 d-flex justify-content-center margin-top-xs collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav">
+    
+      </ul>
+    </div>
+    <!-- Button -->
+        <ul class="col-xl-3 nav navbar-nav mt-4" style="margin-left:80px;">
+            <?php
+                if(!isset($_SESSION['login'])){
+                    echo "<li class=\"nav-item\">
+                    <a class=\"button-rpeach font-weight-bold nav-link\" href=\"login.php\">LOGIN</a>
+                  </li>
+                  <li>
+                    <a class=\"button-rpeach font-weight-bold nav-link\" href=\"index.php\">SIGNUP</a>
+                  </li>";
+                }else {
+                    echo "<li class=\"nav-item\">
+                    <a class=\"button-rpeach font-weight-bold nav-link\" href=\"logout.php\">LOGOUT</a>
+                    </li>";
+                }
+            ?>
+          </ul>
+  </div>    <div class="row mb-4">
             <div class="sidebar col-xs-12 col-sm-4 col-lg-4 col-xl-3 center-align" style="height:900px;">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
-                                <div class="box-1">
-                                    <img src="assets/img//profile/human.jpg" alt="" class="picture">
-                                    <div class="back-shape">
-                                        <span class="sub-title font-weight-bold">Corporate :</span>
-                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?></h3>
-                                        <span class="sub-title font-weight-bold">ID Corporate :</span>
-                                        <p> <span class="balance font-weight-bold"><?php echo $_SESSION['id']; ?></span></p>
+                            <div class="box-1">
+                                    <img src="https://www.weact.org/wp-content/uploads/2016/10/Blank-profile.png" alt="" class="picture">
+                                    <div class="back-shape-cor"><br>
+                                        <span class="sub-title font-weight-bold">Hello</span>
+                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?> </h3><br>
+                                        <span class="sub-title font-weight-bold">ID Corporate</span>
+                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['id']; ?> </h3>
                                     </div>
                                 </div>
                             </div>
@@ -52,12 +83,9 @@
                             <nav>                                    
                                 <ul class="nav nav-pills flex-column sidebar-nav">
                                     <li class="nav-item"><a href="dashboard-status.php" class="nav-link active font-weight-bold" hidden><em class="fa fa-dashboard"></em> Status </a></li>
-                                    <li class="nav-item"><a href="dashboard-status.php" class="nav-link active font-weight-bold"><em class="fa fa-dashboard"></em> Status </a></li>
-                                    <li class="nav-item"><a href="dashboard-verified.php" class="nav-link font-weight-bold"><em class="fa fa-info"></em> Verified </a></li>
-                                    <li class="nav-item"><a href="dashboard-rejected.html" class="nav-link font-weight-bold"><em class="fa fa-times-circle"></em> Reject </a></li>
                                 </ul>
                             </nav>
-                        </div>
+                    </div>
                 </div>
                 <div class="col-xs-12 col-sm-8 col-lg-8 col-xl-9 pt-3 pl-4 pr-5" style="margin-top:100px;">
                     <main>
@@ -107,14 +135,6 @@
                                                                </tbody>
                                                     </table>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 col-lg-4">
-                                        <div class="card mb-4">
-                                            <div class="card-block">
-                                                <h3 class="card-title">Your Sertificate</h3>
-                                                <h6 class="card-subtitle mb-2 text-muted">This sertificate</h6>
                                             </div>
                                         </div>
                                     </div>
