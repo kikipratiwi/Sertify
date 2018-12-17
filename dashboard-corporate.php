@@ -84,9 +84,9 @@
                                     <img src="assets/img//profile/human.jpg" alt="" class="picture">
                                     <div class="back-shape">
                                         <span class="sub-title font-weight-bold">Corporate :</span>
-                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?><</h3>
+                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?></h3>
                                         <span class="sub-title font-weight-bold">ID Corporate :</span>
-                                        <p> <span class="balance font-weight-bold"><?php echo $_SESSION['id']; ?><</span></p>
+                                        <p> <span class="balance font-weight-bold"><?php echo $_SESSION['id']; ?></span></p>
                                     </div>
                                 </div>
                             </div>
@@ -131,15 +131,16 @@
                                                                 }
                                                         $sql = "SELECT id,certificates.number as numb, upload_at from certificates where id = $id";
                                                         $result = $conn-> query($sql);
-
+                                                        $nomor=0;
                                                         if($result-> num_rows > 0){
                                                             while ($row = $result-> fetch_assoc()){
+                                                                $nomor++;
                                                                 echo "<tr>
-                                                                        <td>". $row["id"]. "</td>
+                                                                        <td>". $nomor. "</td>
                                                                         <td>". $row["numb"]. "</td>
                                                                         <td>". $row["upload_at"] ."</td>";
                                                               
-                                                                echo "<td><a href=''> <button type='button' >VIEW</button></a></td></tr>";
+                                                                echo "<td><a href='process/certificate_json.php?id=". $row["id"]. "'> <button class='button-rpeach' type='button' >VIEW</button></a></td></tr>";
 
                                                             }
                                                         }else {
