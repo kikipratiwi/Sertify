@@ -33,72 +33,62 @@
     <!-- Header -->
   <?php require'header.php' ?>
       </div>
-    <div class="row mb-4">
-            <div class="sidebar col-xs-12 col-sm-4 col-lg-4 col-xl-3 center-align">
+      <div class="row mb-4">
+            <div class="sidebar col-xs-12 col-sm-4 col-lg-4 col-xl-3 center-align" style="height:1000px;">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
                                 <div class="box-1">
                                     <img src="assets/img//profile/human.jpg" alt="" class="picture">
-                                    <div class="back-shape">
+                                    <div class="back-shape"><br>
                                         <span class="sub-title font-weight-bold">Hello</span>
-                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?></h3>
-                                        <span class="sub-title font-weight-bold">Your Balance :</span>
-                                        <p><span class="currency font-weight-bold">ETH  </span>   <span class="balance font-weight-bold">29.392.921</span></p>
+                                        <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?> </h3>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6" style="margin-top:500px; position: fixed">
+                    <div class="col-md-3 col-sm-6" style="margin-top:425px; position: fixed">
                             <nav>                                    
                                 <ul class="nav nav-pills flex-column sidebar-nav">
                                     <li class="nav-item"><a href="dashboard-status.php" class="nav-link active font-weight-bold"><em class="fa fa-dashboard"></em> Status </a></li>
                                     <li class="nav-item"><a href="dashboard-verified.php" class="nav-link font-weight-bold"><em class="fa fa-info"></em> Verified </a></li>
-                                    <li class="nav-item"><a href="dashboard-rejected.html" class="nav-link font-weight-bold"><em class="fa fa-times-circle"></em> Reject </a></li>
-                                    <li class="nav-item"><a href="da" class="nav-link font-weight-bold"><em class="fa fa-pause"></em> Pending </a></li>
+                                    <li class="nav-item"><a href="dashboard-rejected.php" class="nav-link font-weight-bold"><em class="fa fa-times-circle"></em> Reject </a></li>
                                 </ul>
                             </nav>
                         </div>
                 </div>
-                <div class="col-xs-12 col-sm-8 col-lg-8 col-xl-9 pt-3 pl-4 pr-5" style="margin-top:100px;">
+                <div class="col-xs-12 col-sm-8 col-lg-8 col-xl-9 pt-3 pl-4 pr-5" style="margin-top:70px;">
                     <main>
+                    <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "db_sertify";
+
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                    // Check connection
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+                    $id = $_SESSION['id'];
+                    $sql = "SELECT certificates.id as id,
+                    certificates.file_name as name,
+                    agencies.name as penerbit,
+                    certificates.status
+                    FROM certificates, agencies
+                    WHERE certificates.agency_id = agencies.id AND certificates.status = 'p' AND certificates.user_id = $id";
+                    $result = mysqli_query($conn, $sql);
+                ?>
                         <section class="row">
                             <div class="col-sm-12">
                                 <section class="row">
                                     <div class="col-md-12 col-lg-8">
-                                        <div class="card jumbotron">
-                                            <h1 class="mb-4">Dashboard</h1>
-                                            <p class="lead">Dashboard ini menyediakan segala informasi
-                                                mengenai segala transaksi yang terjadi pada web ini.
-                                            </p>
-                                        </div>
                                         <div class="card mb-4">
-                                            <div class="card-block">
-                                                <h3 class="card-title">Statistik</h3>
-                                                <div class="dropdown card-title-btn-container">
-                                                    <button class="btn btn-sm btn-subtle" type="button"><em class="fa fa-list-ul"></em> View All</button>
-                                                    <button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
-                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
-                                                        <a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
-                                                        <a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a></div>
-                                                </div>
-                                                <h6 class="card-subtitle mb-2 text-muted">Latest traffic stats</h6>
-                                                <div class="canvas-wrapper">
-                                                    <canvas class="chart" id="line-chart" height="200" width="600"></canvas>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="card mb-4">
-                                            <div class="card-block">
-                                                <h3 class="card-title">Pengajuan Terakhir</h3>
-                                                <div class="dropdown card-title-btn-container">
-                                                    <button class="btn btn-sm btn-subtle" type="button"><em class="fa fa-list-ul"></em> View All</button>
-                                                    <button class="btn btn-sm btn-subtle dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><em class="fa fa-cog"></em></button>
-                                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"><a class="dropdown-item" href="#"><em class="fa fa-search mr-1"></em> More info</a>
-                                                        <a class="dropdown-item" href="#"><em class="fa fa-thumb-tack mr-1"></em> Pin Window</a>
-                                                        <a class="dropdown-item" href="#"><em class="fa fa-remove mr-1"></em> Close Window</a></div>
-                                                </div>
+                                            <div class="card-block" style="margin:20px;">
+                                                <h3 class="card-title">Sedang Diajukan</h3>
                                                 <div class="table-responsive">
                                                     <table class="table table-striped">
                                                         <thead>
@@ -110,44 +100,96 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
+                                                        <?php
+                                                            if (mysqli_num_rows($result) > 0) {
+                                                                // output data of each row
+                                                                while($row = mysqli_fetch_assoc($result)) {
+                                                                    // echo "<br>". "id: " . $row["id"]. "<br> email : " . $row["email"]. "<br> name : " . $row["name"]. "<br><br>";
+
+                                                            echo "
+                                                                <tr>
+                                                                    <td>" . $row["id"]. "</td>
+                                                                    <td>" . $row["name"]. "</td>
+                                                                    <td>" . $row["penerbit"]. "</td>
+                                                                    <td>Pending</td>
+                                                                </tr>";
+                                                            }
+                                                            } else {
+                                                                echo "'0 results'";
+                                                            }
+                                                            
+                                                            mysqli_close($conn);
+                                                            ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card mb-4">
+                <?php
+                    $servername = "localhost";
+                    $username = "root";
+                    $password = "";
+                    $dbname = "db_sertify";
+
+                    // Create connection
+                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                    // Check connection
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+                    $id = $_SESSION['id'];
+                    $sql = "SELECT certificates.id,
+                    certificates.file_name as name,
+                    agencies.name as penerbit,
+                    certificates.note
+                    FROM certificates, agencies
+                    WHERE certificates.agency_id = agencies.id AND certificates.user_id = $id";
+                    $result = mysqli_query($conn, $sql);
+                    
+                    
+                ?>
+                                            <div class="card-block" style="margin:20px;">
+                                                <h3 class="card-title">Pengajuan Terakhir</h3>
+                                                <div class="table-responsive">
+                                                    <table class="table table-striped">
+                                                        <thead>
                                                             <tr>
-                                                                <td>0001</td>
-                                                                <td>Product Name 1</td>
-                                                                <td>Customer 1</td>
-                                                                <td>Verified</td>
+                                                                <th>No.Trsc</th>
+                                                                <th>Sertifikat</th>
+                                                                <th>Penerbit</th>
+                                                                <th>Status</th>
                                                             </tr>
-                                                            <tr>
-                                                                <td>0002</td>
-                                                                <td>Product Name 2</td>
-                                                                <td>Customer 2</td>
-                                                                <td>Verified</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>0003</td>
-                                                                <td>Product Name 3</td>
-                                                                <td>Customer 3</td>
-                                                                <td>Reject</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>0004</td>
-                                                                <td>Product Name 4</td>
-                                                                <td>Customer 4</td>
-                                                                <td>Pending</td>
-                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <?php
+                                                            if (mysqli_num_rows($result) > 0) {
+                                                                // output data of each row
+                                                                while($row = mysqli_fetch_assoc($result)) {
+                                                                    // echo "<br>". "id: " . $row["id"]. "<br> email : " . $row["email"]. "<br> name : " . $row["name"]. "<br><br>";
+
+                                                            echo "
+                                                                <tr>
+                                                                    <td>" . $row["id"]. "</td>
+                                                                    <td>" . $row["name"]. "</td>
+                                                                    <td>" . $row["penerbit"]. "</td>
+                                                                    <td>" . $row["note"]. "</td>
+                                                                </tr>";
+                                                            }
+                                                            } else {
+                                                                echo "'0 results'";
+                                                            }
+                                                            
+                                                            mysqli_close($conn);
+                                                            ?>
                                                         </tbody>
                                                     </table>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12 col-lg-4">
-                                        <div class="card mb-4">
-                                            <div class="card-block">
-                                                <h3 class="card-title">Your Sertificate</h3>
-                                                <h6 class="card-subtitle mb-2 text-muted">This sertificate</h6>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </section>
                             </div>
                         </section>
