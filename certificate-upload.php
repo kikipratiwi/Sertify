@@ -29,12 +29,12 @@
     <div class="container-fluid">
       <!--Ini adalah tingkat 2-->
       <div class="row pt-5 mt-5"></div>
-        <div class="row  pt-2 mt-2" style="margin-left:120px;">
+        <div class="row  pt-2 mt-2" style="margin-left:70px;">
             <div class="col-md-6">
-             <img class="img-upload" src="assets/img/upload.png" alt="">
+             <img class="" src="assets/img/upload.png" alt="" style="width:700px;">
             </div>
             <div class="col-md-5">
-              <div class="upload-box text-center ml-5">
+              <div class="upload-box text-center ml-5" style="height:500px; margin-top:70px;">
                   <form action="process/certificate-upload.php" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="user_id" value=1>
                       <div class="form-group row align-middle">
@@ -59,14 +59,14 @@
                         </div>
                       </div>
                       <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        <span class="" id="inputGroupFileAddon01">Upload File :</span>
                       </div>
                       <div class="custom-file">
                         <input type="file" name="certificate_file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" style="width:400px;">
                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                       </div>
                       <div>
-                        <button type="submit" name="upload" class="btn button-rpeach font-weight-bold" style="border-radius:50px; width: 140px; font-size: 12pt;">Submit</button>
+                        <button type="submit" name="upload" class="btn button-rpeach font-weight-bold" style="border-radius:50px; width: 140px; font-size: 12pt; margin-top:30px;">Submit</button>
                       </div>
                 </form>
               </div>
