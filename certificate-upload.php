@@ -59,14 +59,14 @@
                         </div>
                       </div>
                       <div class="input-group-prepend">
-                        <span class="" id="inputGroupFileAddon01">Upload File :</span>
+                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
                       </div>
                       <div class="custom-file">
                         <input type="file" name="certificate_file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" style="width:400px;">
                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                       </div>
                       <div>
-                        <button type="submit" name="upload" class="btn button-rpeach font-weight-bold" style="border-radius:50px; width: 140px; font-size: 12pt; margin-top:30px;">Submit</button>
+                        <button type="submit" name="upload" class="btn button-rpeach font-weight-bold" style="border-radius:50px; width: 140px; font-size: 12pt;">Submit</button>
                       </div>
                 </form>
               </div>
