@@ -47,7 +47,7 @@
   
         <!-- Logo Brand Navbar -->  
         <div class="col-xl-2">
-            <a href="index.html" class="navbar-brand" style="margin-left:80px"><img style="height: 40px;" src="assets/img//sertify-logotype.png"></a>
+            <a href="http://192.168.64.2/sertify/public/dashboard-corporate.php" class="navbar-brand" style="margin-left:80px"><img style="height: 40px;" src="assets/img//sertify-logotype.png"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -57,7 +57,7 @@
           <div class="col-xl-7 d-flex justify-content-center margin-top-xs collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">HOME</a>
+                <a class="nav-link" href="http://192.168.64.2/sertify/public/dashboard-corporate.php">HOME</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="faq.html">F.A.Q</a>
@@ -79,10 +79,7 @@
         <!-- Button -->
             <ul class="col-xl-3 nav navbar-nav mt-4 mr-3">
                 <li class="nav-item">
-                  <a class="button-rpeach font-weight-bold nav-link" href="login.html">LOG IN</a>
-                </li>
-                <li>
-                  <a class="button-rpeach font-weight-bold nav-link" href="index.html">SIGN UP</a>
+                  <a class="button-rpeach font-weight-bold nav-link" href="login.html">LOG OUT</a>
                 </li>
               </ul>
   </div>
@@ -118,7 +115,7 @@
                         <div class="formOutput">
                             <label>Signature</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="genSigHash">
+                                <input type="text" class="form-control" id="genSigHash" readonly>
                             </div><!-- /input-group -->
                             <small class="form-text text-muted">The cryptographic signature which you can share.</small>
                         </div>
@@ -233,13 +230,13 @@
     <div class="container" id="certificate-preview">
             <h3>Preview Sertifikat</h3>
             <p>Nomor Sertifikat: <span id="NomorSertifikat"></span></p>
+            <div class="row">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reject_modal" data-whatever="@mdo">Reject</button>
+                    <a id="linkfile" href=""><button type="submit" class="btn btn-success" onClick="confirmation()">Lanjutkan</button></a> 
+            </div>
 
         <embed id="certificate-embed" src="" type="application/pdf" width="80%" height="600px" id="fileToHash">
     
-        <div class="row">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reject_modal" data-whatever="@mdo">Reject</button>
-            <button type="submit" class="btn btn-success" onClick="confirmation()">Lanjutkan</button>
-        </div>
     
         <div class="modal fade" id="reject_modal" tabindex="-1" role="dialog" aria-labelledby="reject_modalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -318,6 +315,7 @@
             if (confirm(message)) {
                 sigForm.style.display = "block";
                 preview.style.display = "none";
+
             } else {
                 preview.style.display = "block";
                 sigForm.style.display = "none";
@@ -370,6 +368,7 @@
             var link = document.getElementById("certificate-embed");
             link.setAttribute("src","assets/data/users/certificates/" + data.certificate[0].file_name);
             document.getElementById("NomorSertifikat").innerHTML = data.certificate[0].certificate_number;
+            document.getElementById("linkfile").setAttribute("action","assets/data/users/certificates/"+data.certificate[0].file_name);
         });        
     </script>
 

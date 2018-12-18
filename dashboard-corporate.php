@@ -69,7 +69,7 @@
                             <div class="col-md-3 col-sm-6">
                             <div class="box-1">
                                     <img src="https://www.weact.org/wp-content/uploads/2016/10/Blank-profile.png" alt="" class="picture">
-                                    <div class="back-shape-cor"><br>
+                                    <div class="back-shape-cor mb-3" style="padding-bottom:60px;"><br>
                                         <span class="sub-title font-weight-bold">Hello</span>
                                         <h3 class="title font-weight-bold"><?php echo $_SESSION['name']; ?> </h3><br>
                                         <span class="sub-title font-weight-bold">ID Corporate</span>
@@ -82,18 +82,21 @@
                     <div class="col-md-3 col-sm-6" style="margin-top:500px; position: fixed">
                             <nav>                                    
                                 <ul class="nav nav-pills flex-column sidebar-nav">
-                                    <li class="nav-item"><a href="dashboard-status.php" class="nav-link active font-weight-bold" hidden><em class="fa fa-dashboard"></em> Status </a></li>
+                                <ul class="nav nav-pills flex-column sidebar-nav">
+                                    <li class="nav-item"><a href="dashboard-status.php" class="nav-link active font-weight-bold"><em class="fa fa-dashboard"></em> Status </a></li>
+                                    <li class="nav-item"><a href="http://localhost:3000/certificate-stamp.html" class="nav-link font-weight-bold"><em class="fa fa-info"></em> Upload </a></li>
+                                </ul>
                                 </ul>
                             </nav>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-8 col-lg-8 col-xl-9 pt-3 pl-4 pr-5" style="margin-top:100px;">
+                <div class="col-xs-12 col-sm-8 col-lg-8 col-xl-9 pt-3 pl-4 pr-5" style="margin-top:70px;">
                     <main>
                         <section class="row">
                             <div class="col-sm-12">
                                 <section class="row">
-                                    <div class="col-md-12 col-lg-8">
-                                        <div class="card mb-4" style="padding:30px;">
+                                    <div class="col-md-12 col-lg-12">
+                                        <div class="card" style="padding:30px;">
                                             <div class="card-block">
                                                 <h3 class="card-title">Permohonan Pengajuan</h3>
                                                 <div class="table-responsive">

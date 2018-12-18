@@ -48,7 +48,7 @@
                             <div class="pt-3">
                               <h3 class="mt-3 mb-2 font-weight-bold" style="color:#FBBF5B">SIGN UP</h3>
                             </div>
-                            <div class="w3-row mt-2 ml-5" style="padding-left: 45px;">
+                            <div class="w3-row mt-2 ml-5">
                               <a href="javascript:void(0)" onclick="openCity(event, 'user-registration');" style="text-align:center;">
                                 <div class="w3-third tablink w3-bottombar w3-border-red w3-padding" style="width:120px;">Pengguna</div>
                               </a>
@@ -85,7 +85,7 @@
                                   <input class="form-control mb-2" type="password" id="confirm password" name="confirm_password">
                                 </div>
                                 <div class="mt-2">
-                                  <button type="submit" class="btn button-rpeach font-weight-bold mb-2" style="border: 0px; color:#682B5F; font-size: 12pt; height: 50px; width: 130px; border-radius: 50px;">Log In</button>
+                                  <button type="submit" class="btn button-rpeach font-weight-bold mb-2" style="border: 0px; color:#682B5F; font-size: 12pt; height: 50px; width: 130px; border-radius: 50px;">SIGN UP</button>
                                   <p style="font-size: 12px;">Belum memiliki akun? <a routerLink="login"><span class="font-weight-bol" style="color:#FBBF5B">Daftar</span></a></p>
                                 </div>
                               </div>

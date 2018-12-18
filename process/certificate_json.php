@@ -28,5 +28,5 @@
     fwrite($file, $info);
     fclose($file);
 
-    header('location:../certificate-generatesignature.html');
+    header('location:http://localhost:3000/certificate-generatesignature.html');
 ?> 

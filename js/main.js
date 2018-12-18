@@ -44,37 +44,38 @@ async function onLoad () {
 
 let network = 'mainnet'
 
+//inisialisasi
 async function init () {
-  contract = tc(source)
+  contract = tc(source)                 // load contract
 
   // wait for web3 to load
   await wait(1000)
 
-  const {id:netId, type:netType} = await detectNetwork(getProvider())
-  if (!(netType === 'mainnet' || netType === 'rinkeby')) {
+  const {id:netId, type:netType} = await detectNetwork(getProvider())   // mendapatkan provider jaringan dan di assign ke netId dan netType
+  if (!(netType === 'mainnet' || netType === 'rinkeby')) {              // hanya provider jaringan rinkeby / ethereum yg dapat mengakses
     alert('Only Mainnet or Rinkeby Testnet is currencly supported')
   } else {
     network = netType
   }
 
-  provider = getProvider()
-  contract.setProvider(provider)
+  provider = getProvider()  // mendapatkan provider dan di assign ke variabel provider
+  contract.setProvider(provider)  // jadikan isi variabel provider (rinkeby / mainnet ethereum) menjadi provider yang digunakan oleh Sertify
 
-  contractAddress = addresses[network]
+  contractAddress = addresses[network]      // mendapatkan address dari network yg di gunakan
 
-  document.querySelector('#networkType').innerHTML = network
-  document.querySelector('#etherscanLink').href = `https://${network === 'mainnet' ? '' : `${network}.`}etherscan.io/address/${contractAddress}`
+  document.querySelector('#networkType').innerHTML = network    // assign nama network ke id #networkType (untuk di tampilkan di page Sertify)
+  document.querySelector('#etherscanLink').href = `https://${network === 'mainnet' ? '' : `${network}.`}etherscan.io/address/${contractAddress}`  // menampilkan alamat etherscan dari network yg digunakan
 
-  instance = await contract.at(contractAddress)
-  account = getAccount()
+  instance = await contract.at(contractAddress)   // get contract
+  account = getAccount()                          // mendapatkan akun yang digunakan oleh user
 
   if (!window.web3) {
-    window.web3 = new window.Web3(provider)
+    window.web3 = new window.Web3(provider)     // instansiasi web3
   }
 }
 
 /**
- * PROVIDER
+ * fungsi untuk mendapatkan PROVIDER yang digunakan (Rinkeby atau Mainnet)
  */
 
 function getProvider () {
@@ -83,11 +84,12 @@ function getProvider () {
   }
 
   const providerUrl = `https://${network}.infura.io:443`
-  const provider = new window.Web3.providers.HttpProvider(providerUrl)
+  const provider = new window.Web3.providers.HttpProvider(providerUrl) 
 
   return provider
 }
 
+// mengambil socket provider (Rinkeby atau Mainnet) yang digunakan
 function getWebsocketProvider () {
   // https://github.com/ethereum/web3.js/issues/1119
   if (!window.Web3.providers.WebsocketProvider.prototype.sendAsync) {
@@ -97,6 +99,7 @@ function getWebsocketProvider () {
   return new window.Web3.providers.WebsocketProvider(`wss://${network}.infura.io/ws`)
 }
 
+// mengambil akun yang digunakan oleh user
 function getAccount () {
   if (window.web3) {
     return window.web3.defaultAccount || window.web3.eth.accounts[0]
@@ -153,53 +156,56 @@ const eventsLog = document.querySelector('#eventsLog')
  * STAMP FORM
  */
 
-const stampFileInput = document.querySelector('#stampFile')
-const stampOutHash = document.querySelector('#stampHash')
-const stampForm = document.querySelector('#stampForm')
+const stampFileInput = document.querySelector('#stampFile') // Variabel untuk input dokumen
+const stampOutHash = document.querySelector('#stampHash')   // Variabel untuk hasil hashing
+const stampForm = document.querySelector('#stampForm')      // Variabel untuk stamp / submit form
 
 stampFileInput.addEventListener('change', handleStampFile, false)
 stampForm.addEventListener('submit', handleStampForm, false)
 
+// fungsi untuk generate hash dari file
 async function handleStampFile (event) {
   stampOutHash.value = ''
-  const file = event.target.files[0]
-  const hash = await fileToSha3(file)
+  const file = event.target.files[0]                // dokumen di simpan ke variabel file
+  const hash = await fileToSha3(file)               // generate hash dokumen dengan format sha3
 
-  stampOutHash.value = hash
+  stampOutHash.value = hash                         // assign hasil hash ke variabel
 }
 
+// fungsi untuk meng-handle form stamp dokumen
 async function handleStampForm (event) {
   event.preventDefault()
   const target = event.target
 
-  if (!account) {
+  if (!account) {       // mengecek apakah user sudah terhubung dengan network (rinkeby atau mainnet)
     alert('Please connect MetaMask account set to Rinkeby network')
     return false
   }
 
-  const hash = stampOutHash.value
+  const hash = stampOutHash.value   // assign hasil hash dari dokumen ke variabel
 
-  if (!hash) {
+  if (!hash) {          // mengecek apakah dokumen sudah di upload atau belum
     alert('Please select the document')
     return false
   }
 
-  target.classList.toggle('loading', true)
-  await stampDoc(hash)
-  target.classList.toggle('loading', false)
+  target.classList.toggle('loading', true)    // memberi efek loading saat stamp
+  await stampDoc(hash)                        // stamp dokumen dengan parameter input nilai hash dokumen
+  target.classList.toggle('loading', false)   // menghilangkan efek loading saat stamp
 }
 
+// fungsi untuk stamp dokumen
 async function stampDoc (hash) {
   try {
-    const exists = await instance.exists(hash, {from: account})
+    const exists = await instance.exists(hash, {from: account}) // mengecek ketersediaan dokumen
 
-    if (exists) {
+    if (exists) { // pengecekan apakah dokumen sudah di stamp atau belum
       // alert('This document already exists as being stamped')
       $('#notification').html('This document already exists as being stamped')
       return false
     }
 
-    const value = await instance.stamp(hash, {from: account})
+    const value = await instance.stamp(hash, {from: account})   // stamp dokumen parameter input berupa hash dan alamat akun
     alert('Successfully stamped document')
   } catch (error) {
     alert(error)
@@ -210,22 +216,24 @@ async function stampDoc (hash) {
  * STAMP CHECK FORM
  */
 
-const checkForm = document.querySelector('#checkForm')
-const checkFile = document.querySelector('#checkFile')
-const checkHash = document.querySelector('#checkHash')
-const checkStamper = document.querySelector('#checkStamper')
-const checkDatetime = document.querySelector('#checkDatetime')
+const checkForm = document.querySelector('#checkForm')          // variabel untuk form check stamper
+const checkFile = document.querySelector('#checkFile')          // variabel untuk menampung dokumen
+const checkHash = document.querySelector('#checkHash')          // variabel untuk menampung hash dari dokumen
+const checkStamper = document.querySelector('#checkStamper')    // variabel untuk menampung siapa stamper dokumen
+const checkDatetime = document.querySelector('#checkDatetime')  // variabel untuk menampung timestamp kapan dokumen di stamp
 checkFile.addEventListener('change', handleCheckFile, false)
 checkForm.addEventListener('submit', handleCheckForm, false)
 
+// fungsi untuk generate hash dari file
 async function handleCheckFile (event) {
   checkHash.value = ''
-  const file = event.target.files[0]
+  const file = event.target.files[0]    // dokumen di simpan ke variabel file
 
-  const hash = await fileToSha3(file)
-  checkHash.value = hash
+  const hash = await fileToSha3(file)   // generate hash dokumen dengan format sha3
+  checkHash.value = hash                // assign hasil hash ke variabel
 }
 
+// fungsi untuk meng-handle form check stamper
 async function handleCheckForm (event) {
   event.preventDefault()
 
@@ -234,25 +242,25 @@ async function handleCheckForm (event) {
 
   const hash = checkHash.value
 
-  if (!hash) {
+  if (!hash) {          // mengecek apakah dokumen sudah di upload atau belum
     alert('Please select the document')
     return false
   }
 
-  const exists = await instance.exists(hash, {from: account})
+  const exists = await instance.exists(hash, {from: account})   // assign status ketersediaan (sudah di stamp) dokumen di smart contract
 
-  if (!exists) {
+  if (!exists) {  // mengecek apakah dokumen sudah di stamp atau belum pada smart contract
     alert('Document does not exist in smart contract')
     return false
   }
 
   try {
-    const stamper = await instance.getStamper(hash, {from: account})
-    const timestamp = await instance.getTimestamp(hash, {from: account})
-    const date = moment.unix(timestamp).format('YYYY-MM-DD hh:mmA')
+    const stamper = await instance.getStamper(hash, {from: account})        // assign alamat stamper dokumen ke dalam variabel
+    const timestamp = await instance.getTimestamp(hash, {from: account})    // assign timestamp kapan dokumen di stamp
+    const date = moment.unix(timestamp).format('YYYY-MM-DD hh:mmA')         // memberi pemformatan dari timestamp dan di assign ke variabel date
 
-    checkStamper.value = stamper
-    checkDatetime.value = date
+    checkStamper.value = stamper      // assign alamat stamper ke checkStamper (untuk di tampilkan di page sertify)
+    checkDatetime.value = date        // assign timestamp ke checkDatetime (untuk di tampilkan di page sertify)
   } catch (error) {
     alert(error)
   }
@@ -262,39 +270,41 @@ async function handleCheckForm (event) {
  * STAMP GEN SIG FORM
  */
 
-const genSigForm = document.querySelector('#genSigForm')
-const genSigFile = document.querySelector('#genSigFile')
-const genSigHash = document.querySelector('#genSigHash')
+const genSigForm = document.querySelector('#genSigForm')            // variabel untuk form check stamper
+const genSigFile = document.querySelector('#genSigFile')            // variabel untuk menampung dokumen
+const genSigHash = document.querySelector('#genSigHash')            // variabel untuk menampung digital signature dari dokumen  
 genSigForm.addEventListener('submit', handleGenSigForm, false)
 
+// fungsi untuk menghandle generate signatur
 async function handleGenSigForm (event) {
   event.preventDefault()
 
   genSigHash.value = ''
-  const file = genSigFile.files[0]
-  const hash = await fileToSha3(file)
+  const file = genSigFile.files[0]    // dokumen di simpan ke variabel file
+  const hash = await fileToSha3(file) // generate hash dokumen dengan format sha3
 
   const exists = await instance.exists(hash, {from: account})
 
-  if (!exists) {
+  if (!exists) {        // mengecek apakah dokumen sudah di stamp atau belum pada smart contract
     alert('Please stamp document before generating signature')
     return false
   }
 
-  if (!account) {
+  if (!account) {       // mengecek apakah user sudah terhubung dengan network (rinkeby atau mainnet)
     alert('Please connect MetaMask account set to Rinkeby network')
     return false
   }
 
-  const stamper = await instance.getStamper(hash, {from: account})
+  const stamper = await instance.getStamper(hash, {from: account})    //  mendapatkan alamat stamper dokumen
 
-  if (stamper !== account) {
-    alert('You are not the stamper of this document')
+  if (stamper !== account) {    //  mengecek apakah alamat user sama dengan stamper
+    alert('You are not the stamper of this document')   // (syarat generate signature adalah stamper yang meng generate signature)
     return false
   }
 
+  // generate digital signature
   web3.eth.sign(account, hash, (error, sig) => {
-    genSigHash.value = sig
+    genSigHash.value = sig      // assign digital signature ke dalam variabel genSigHash (untuk di tampilkan di page Sertify)
   });
 }
 
@@ -303,43 +313,43 @@ async function handleGenSigForm (event) {
  * STAMP VERIFY SIG FORM
  */
 
-const verifySigForm = document.querySelector('#verifySigForm')
-const verifySigFile = document.querySelector('#verifySigFile')
-const verifySigInput = document.querySelector('#verifySigInput')
-const verifySigOut = document.querySelector('#verifySigOut')
+const verifySigForm = document.querySelector('#verifySigForm')      // variabel untuk form verifikasi signature
+const verifySigFile = document.querySelector('#verifySigFile')      // variabel untuk menampung dokumen
+const verifySigInput = document.querySelector('#verifySigInput')    // variabel untuk menampung digital signature dari dokumen
+const verifySigOut = document.querySelector('#verifySigOut')        // variavel untuk menampung hash dari dokumen
 verifySigForm.addEventListener('submit', handleVerifySigForm, false)
 
 async function handleVerifySigForm (event) {
   event.preventDefault()
 
   verifySigOut.innerHTML = ''
-  const file = verifySigFile.files[0]
+  const file = verifySigFile.files[0]   // dokumen di simpan ke variabel file
 
-  const hash = await fileToSha3(file)
-  const sig = verifySigInput.value
+  const hash = await fileToSha3(file)   // generate hash dokumen dengan format sha3
+  const sig = verifySigInput.value      // assign digital signature ke variabel sig
 
-  const exists = await instance.exists(hash, {from: account})
+  const exists = await instance.exists(hash, {from: account})   // assign status ketersediaan (sudah di stamp) dokumen di smart contract
 
-  if (!exists) {
+  if (!exists) {  // mengecek apakah dokumen sudah di stamp atau belum pada smart contract
     alert('There is no record for this document')
     return false
   }
 
-  if (!sig) {
+  if (!sig) {     // mengecek apakah signature sudah di isi atau belum
     alert('Please input signature string')
     return false
   }
 
-  const addr = await instance.getStamper(hash)
-  const isSigner = await instance.ecverify(hash, sig, addr, {from: account})
+  const addr = await instance.getStamper(hash)    // mengambil alamat stamper dari dokumen    
+  const isSigner = await instance.ecverify(hash, sig, addr, {from: account})    // memverifikasi apakah hash dokumen cocok dengan signature yang di stamp
 
-  let output = `<span class="red">✘ ${addr} <strong>IS NOT</strong> signer of ${hash}</span>`
+  let output = `<span class="red">✘ ${addr} <strong>IS NOT</strong> signer of ${hash}</span>`   // jika signature tidak cocok dengan dokumen
 
   if (isSigner) {
-    output = `<span class="green">✔ ${addr} <strong>IS</strong> signer of ${hash}</span>`
+    output = `<span class="green">✔ ${addr} <strong>IS</strong> signer of ${hash}</span>`       // jika signature cocok dengan dokumen
   }
 
-  verifySigOut.innerHTML = output
+  verifySigOut.innerHTML = output       // tampilkan hasil verifikasi di page Sertify
 }
 
 /**
@@ -359,14 +369,15 @@ function fileToBuffer (file) {
   })
 }
 
+// fungsi untuk generate hash sha3 dari buffer
 async function bufferToSha3 (buffer) {
   return `0x${sha3(buffer).toString('hex')}`
 }
 
-async function fileToSha3 (file) {
-  const buffer = await fileToBuffer(file)
-  const hash = bufferToSha3(arrayBufferToBuffer(buffer))
+async function fileToSha3 (file) {                        
+  const buffer = await fileToBuffer(file)                 // load dari buffer ke variabel
+  const hash = bufferToSha3(arrayBufferToBuffer(buffer))  // konversi dari variabel buffer ke bentuk hash sha3
 
-  return hash
+  return hash   // return isi variabel hash
 }
 
