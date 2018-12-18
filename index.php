@@ -48,7 +48,7 @@
                             <div class="pt-3">
                               <h3 class="mt-3 mb-2 font-weight-bold" style="color:#FBBF5B">SIGN UP</h3>
                             </div>
-                            <div class="w3-row mt-2 ml-5" style="padding-left: 45px;">
+                            <div class="w3-row mt-2 ml-5">
                               <a href="javascript:void(0)" onclick="openCity(event, 'user-registration');" style="text-align:center;">
                                 <div class="w3-third tablink w3-bottombar w3-border-red w3-padding" style="width:120px;">Pengguna</div>
                               </a>
